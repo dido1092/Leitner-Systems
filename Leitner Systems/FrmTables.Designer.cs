@@ -1,6 +1,6 @@
 ﻿namespace Leitner_Systems
 {
-    partial class EnBgWordsTable
+    partial class FrmTables
     {
         /// <summary>
         /// Required designer variable.
@@ -29,37 +29,29 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTables));
             enBgWordBindingSource1 = new BindingSource(components);
             enBgWordBindingSource = new BindingSource(components);
             labelWords = new Label();
             textBoxSearch = new TextBox();
             buttonSearch = new Button();
-            buttonRefresh = new Button();
             buttonDelete = new Button();
             buttonUpDate = new Button();
             buttonInsert = new Button();
-            dataGridViewEnBgWords = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             enBgWordBindingSource3 = new BindingSource(components);
             enBgWordBindingSource2 = new BindingSource(components);
             checkBoxEnWord = new CheckBox();
             checkBoxBgWord = new CheckBox();
+            comboBoxTables = new ComboBox();
+            label1 = new Label();
+            buttonLoad = new Button();
+            dataGridViewTables = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewEnBgWords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTables).BeginInit();
             SuspendLayout();
-            // 
-            // enBgWordBindingSource1
-            // 
-            enBgWordBindingSource1.DataSource = typeof(LeitnerSystemsDataModels.EnBgWord);
-            // 
-            // enBgWordBindingSource
-            // 
-            enBgWordBindingSource.DataSource = typeof(LeitnerSystemsDataModels.EnBgWord);
             // 
             // labelWords
             // 
@@ -72,14 +64,14 @@
             // 
             // textBoxSearch
             // 
-            textBoxSearch.Location = new Point(12, 70);
+            textBoxSearch.Location = new Point(12, 122);
             textBoxSearch.Name = "textBoxSearch";
             textBoxSearch.Size = new Size(321, 23);
             textBoxSearch.TabIndex = 2;
             // 
             // buttonSearch
             // 
-            buttonSearch.Location = new Point(339, 69);
+            buttonSearch.Location = new Point(339, 122);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(122, 23);
             buttonSearch.TabIndex = 3;
@@ -87,19 +79,10 @@
             buttonSearch.UseVisualStyleBackColor = true;
             buttonSearch.Click += buttonSearch_Click;
             // 
-            // buttonRefresh
-            // 
-            buttonRefresh.Location = new Point(492, 26);
-            buttonRefresh.Name = "buttonRefresh";
-            buttonRefresh.Size = new Size(109, 33);
-            buttonRefresh.TabIndex = 4;
-            buttonRefresh.Text = "REFRESH";
-            buttonRefresh.UseVisualStyleBackColor = true;
-            buttonRefresh.Click += buttonRefresh_Click;
-            // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(512, 698);
+            buttonDelete.Enabled = false;
+            buttonDelete.Location = new Point(476, 698);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(89, 29);
             buttonDelete.TabIndex = 4;
@@ -109,7 +92,7 @@
             // 
             // buttonUpDate
             // 
-            buttonUpDate.Location = new Point(512, 195);
+            buttonUpDate.Location = new Point(476, 161);
             buttonUpDate.Name = "buttonUpDate";
             buttonUpDate.Size = new Size(89, 29);
             buttonUpDate.TabIndex = 4;
@@ -119,7 +102,7 @@
             // 
             // buttonInsert
             // 
-            buttonInsert.Location = new Point(512, 122);
+            buttonInsert.Location = new Point(476, 36);
             buttonInsert.Name = "buttonInsert";
             buttonInsert.Size = new Size(89, 23);
             buttonInsert.TabIndex = 5;
@@ -127,50 +110,10 @@
             buttonInsert.UseVisualStyleBackColor = true;
             buttonInsert.Click += buttonInsert_Click;
             // 
-            // dataGridViewEnBgWords
-            // 
-            dataGridViewEnBgWords.AutoGenerateColumns = false;
-            dataGridViewEnBgWords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewEnBgWords.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
-            dataGridViewEnBgWords.DataSource = enBgWordBindingSource3;
-            dataGridViewEnBgWords.Location = new Point(12, 122);
-            dataGridViewEnBgWords.Name = "dataGridViewEnBgWords";
-            dataGridViewEnBgWords.Size = new Size(494, 605);
-            dataGridViewEnBgWords.TabIndex = 6;
-            dataGridViewEnBgWords.CellContentClick += dataGridViewEnBgWords_CellContentClick;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            dataGridViewTextBoxColumn1.HeaderText = "Id";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn2.DataPropertyName = "EnWord";
-            dataGridViewTextBoxColumn2.HeaderText = "EnWord";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn3.DataPropertyName = "BgWord";
-            dataGridViewTextBoxColumn3.HeaderText = "BgWord";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // enBgWordBindingSource3
-            // 
-            enBgWordBindingSource3.DataSource = typeof(LeitnerSystemsDataModels.EnBgWord);
-            // 
-            // enBgWordBindingSource2
-            // 
-            enBgWordBindingSource2.DataSource = typeof(LeitnerSystemsDataModels.EnBgWord);
-            // 
             // checkBoxEnWord
             // 
             checkBoxEnWord.AutoSize = true;
-            checkBoxEnWord.Location = new Point(12, 26);
+            checkBoxEnWord.Location = new Point(13, 87);
             checkBoxEnWord.Name = "checkBoxEnWord";
             checkBoxEnWord.Size = new Size(69, 19);
             checkBoxEnWord.TabIndex = 7;
@@ -181,7 +124,7 @@
             // checkBoxBgWord
             // 
             checkBoxBgWord.AutoSize = true;
-            checkBoxBgWord.Location = new Point(111, 26);
+            checkBoxBgWord.Location = new Point(106, 87);
             checkBoxBgWord.Name = "checkBoxBgWord";
             checkBoxBgWord.Size = new Size(70, 19);
             checkBoxBgWord.TabIndex = 8;
@@ -189,31 +132,71 @@
             checkBoxBgWord.UseVisualStyleBackColor = true;
             checkBoxBgWord.CheckedChanged += checkBoxBgWord_CheckedChanged;
             // 
-            // EnBgWordsTable
+            // comboBoxTables
+            // 
+            comboBoxTables.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTables.FormattingEnabled = true;
+            comboBoxTables.Items.AddRange(new object[] { "BoxOnes", "BoxTwos", "BoxThrees", "BoxFours", "BoxFives", "EnBgWords" });
+            comboBoxTables.Location = new Point(13, 36);
+            comboBoxTables.Name = "comboBoxTables";
+            comboBoxTables.Size = new Size(128, 23);
+            comboBoxTables.TabIndex = 9;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(13, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(40, 15);
+            label1.TabIndex = 10;
+            label1.Text = "Tables";
+            // 
+            // buttonLoad
+            // 
+            buttonLoad.Location = new Point(158, 36);
+            buttonLoad.Name = "buttonLoad";
+            buttonLoad.Size = new Size(75, 23);
+            buttonLoad.TabIndex = 11;
+            buttonLoad.Text = "Load";
+            buttonLoad.UseVisualStyleBackColor = true;
+            buttonLoad.Click += buttonLoad_Click;
+            // 
+            // dataGridViewTables
+            // 
+            dataGridViewTables.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTables.Location = new Point(13, 161);
+            dataGridViewTables.Name = "dataGridViewTables";
+            dataGridViewTables.Size = new Size(448, 566);
+            dataGridViewTables.TabIndex = 12;
+            // 
+            // FrmTables
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(643, 765);
+            ClientSize = new Size(603, 765);
+            Controls.Add(dataGridViewTables);
+            Controls.Add(buttonLoad);
+            Controls.Add(label1);
+            Controls.Add(comboBoxTables);
             Controls.Add(checkBoxBgWord);
             Controls.Add(checkBoxEnWord);
-            Controls.Add(dataGridViewEnBgWords);
             Controls.Add(buttonInsert);
             Controls.Add(buttonUpDate);
             Controls.Add(buttonDelete);
-            Controls.Add(buttonRefresh);
             Controls.Add(buttonSearch);
             Controls.Add(textBoxSearch);
             Controls.Add(labelWords);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            Name = "EnBgWordsTable";
+            Name = "FrmTables";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EnBgWordsTable";
+            Text = "Tables";
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewEnBgWords).EndInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource3).EndInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTables).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -222,7 +205,6 @@
         private Label labelWords;
         private TextBox textBoxSearch;
         private Button buttonSearch;
-        private Button buttonRefresh;
         private Button buttonDelete;
         private Button buttonUpDate;
         private Button buttonInsert;
@@ -231,7 +213,6 @@
         private DataGridViewTextBoxColumn bgWordDataGridViewTextBoxColumn;
         private BindingSource enBgWordBindingSource;
         private BindingSource enBgWordBindingSource1;
-        private DataGridView dataGridViewEnBgWords;
         private BindingSource enBgWordBindingSource2;
         private BindingSource enBgWordBindingSource3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -239,5 +220,9 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private CheckBox checkBoxEnWord;
         private CheckBox checkBoxBgWord;
+        private ComboBox comboBoxTables;
+        private Label label1;
+        private Button buttonLoad;
+        private DataGridView dataGridViewTables;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Leitner_Systems
 {
-    partial class Insert
+    partial class FrmInsert
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInsert));
             textBoxEnWord = new TextBox();
             textBoxBgWord = new TextBox();
             buttonInsert = new Button();
             label1 = new Label();
             label2 = new Label();
             buttonClear = new Button();
+            toolStrip1 = new ToolStrip();
+            toolStripButtonInsertFromFile = new ToolStripButton();
+            checkBoxInBoxOne = new CheckBox();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // textBoxEnWord
@@ -88,19 +93,56 @@
             buttonClear.UseVisualStyleBackColor = true;
             buttonClear.Click += buttonClear_Click;
             // 
-            // Insert
+            // toolStrip1
+            // 
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonInsertFromFile });
+            toolStrip1.Location = new Point(0, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(488, 25);
+            toolStrip1.TabIndex = 6;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButtonInsertFromFile
+            // 
+            toolStripButtonInsertFromFile.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonInsertFromFile.Image = (Image)resources.GetObject("toolStripButtonInsertFromFile.Image");
+            toolStripButtonInsertFromFile.ImageTransparentColor = Color.Magenta;
+            toolStripButtonInsertFromFile.Name = "toolStripButtonInsertFromFile";
+            toolStripButtonInsertFromFile.Size = new Size(23, 22);
+            toolStripButtonInsertFromFile.Text = "InsertFromFile";
+            toolStripButtonInsertFromFile.Click += toolStripButtonInsertFromFile_Click;
+            // 
+            // checkBoxInBoxOne
+            // 
+            checkBoxInBoxOne.AutoSize = true;
+            checkBoxInBoxOne.Location = new Point(192, 28);
+            checkBoxInBoxOne.Name = "checkBoxInBoxOne";
+            checkBoxInBoxOne.Size = new Size(77, 19);
+            checkBoxInBoxOne.TabIndex = 7;
+            checkBoxInBoxOne.Text = "InBoxOne";
+            checkBoxInBoxOne.UseVisualStyleBackColor = true;
+            // 
+            // FrmInsert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(488, 268);
+            Controls.Add(checkBoxInBoxOne);
+            Controls.Add(toolStrip1);
             Controls.Add(buttonClear);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(buttonInsert);
             Controls.Add(textBoxBgWord);
             Controls.Add(textBoxEnWord);
-            Name = "Insert";
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "FrmInsert";
             Text = "Insert";
+            Load += Insert_Load;
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -113,5 +155,8 @@
         private Label label1;
         private Label label2;
         private Button buttonClear;
+        private ToolStrip toolStrip1;
+        private ToolStripButton toolStripButtonInsertFromFile;
+        private CheckBox checkBoxInBoxOne;
     }
 }

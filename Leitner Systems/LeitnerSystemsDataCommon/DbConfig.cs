@@ -10,11 +10,6 @@ namespace Leitner_Systems.LeitnerSystemsDataCommon
     {
         public static string ConnectionString =
 
-        @"Server=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\LeitnerSystems.mdf;Database=LeitnerSystems;Integrated Security=True;Encrypt=False;MultipleActiveResultSets=true;";
-
-        public DbConfig()
-        {
-
-        }
+        @"Server=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\LemonPC\source\repos\Leitner Systems\DB\LeitnerSystems.mdf;Database=LeitnerSystems;Integrated Security=True;Encrypt=False;MultipleActiveResultSets=true;";
     }
 }
