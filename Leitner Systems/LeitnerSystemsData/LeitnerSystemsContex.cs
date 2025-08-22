@@ -18,6 +18,8 @@ namespace Leitner_Systems.LeitnerSystemsData
         public DbSet<BoxThree> BoxThrees { get; set; }
         public DbSet<BoxFour> BoxFours { get; set; }
         public DbSet<BoxFive> BoxFives { get; set; }
+        public DbSet<Tmr> Timers { get; set; }
+        public DbSet<WordMovement> WordMovements { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

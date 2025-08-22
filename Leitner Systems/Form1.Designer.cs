@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             toolStrip1 = new ToolStrip();
             toolStripButtonInsert = new ToolStripButton();
@@ -36,13 +37,24 @@
             toolStripSeparator2 = new ToolStripSeparator();
             toolStripButtonMoveToBoxOne = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
+            toolStripButtonTimers = new ToolStripButton();
             buttonTest = new Button();
+            notifyIconLS = new NotifyIcon(components);
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            showToolStripMenuItem = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
+            timerOne = new System.Windows.Forms.Timer(components);
+            timerTwo = new System.Windows.Forms.Timer(components);
+            timerThree = new System.Windows.Forms.Timer(components);
+            timerFour = new System.Windows.Forms.Timer(components);
+            timerFive = new System.Windows.Forms.Timer(components);
             toolStrip1.SuspendLayout();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonInsert, toolStripSeparator1, toolStripButtonTables, toolStripSeparator2, toolStripButtonMoveToBoxOne, toolStripSeparator3 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonInsert, toolStripSeparator1, toolStripButtonTables, toolStripSeparator2, toolStripButtonMoveToBoxOne, toolStripSeparator3, toolStripButtonTimers });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(676, 25);
@@ -56,7 +68,7 @@
             toolStripButtonInsert.ImageTransparentColor = Color.Magenta;
             toolStripButtonInsert.Name = "toolStripButtonInsert";
             toolStripButtonInsert.Size = new Size(23, 22);
-            toolStripButtonInsert.Text = "INSERT";
+            toolStripButtonInsert.Text = "Insert";
             toolStripButtonInsert.Click += toolStripButtonInsert_Click;
             // 
             // toolStripSeparator1
@@ -94,6 +106,16 @@
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new Size(6, 25);
             // 
+            // toolStripButtonTimers
+            // 
+            toolStripButtonTimers.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonTimers.Image = (Image)resources.GetObject("toolStripButtonTimers.Image");
+            toolStripButtonTimers.ImageTransparentColor = Color.Magenta;
+            toolStripButtonTimers.Name = "toolStripButtonTimers";
+            toolStripButtonTimers.Size = new Size(23, 22);
+            toolStripButtonTimers.Text = "Timers";
+            toolStripButtonTimers.Click += toolStripButtonTimers_Click;
+            // 
             // buttonTest
             // 
             buttonTest.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
@@ -104,6 +126,65 @@
             buttonTest.Text = "T E S T";
             buttonTest.UseVisualStyleBackColor = true;
             buttonTest.Click += buttonTest_Click;
+            // 
+            // notifyIconLS
+            // 
+            notifyIconLS.BalloonTipTitle = "LeitnerSystems";
+            notifyIconLS.ContextMenuStrip = contextMenuStrip1;
+            notifyIconLS.Icon = (Icon)resources.GetObject("notifyIconLS.Icon");
+            notifyIconLS.Text = "LeitnerSystems";
+            notifyIconLS.Visible = true;
+            notifyIconLS.MouseDoubleClick += notifyIconLS_MouseDoubleClick;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showToolStripMenuItem, exitToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(104, 48);
+            // 
+            // showToolStripMenuItem
+            // 
+            showToolStripMenuItem.Name = "showToolStripMenuItem";
+            showToolStripMenuItem.Size = new Size(103, 22);
+            showToolStripMenuItem.Text = "Show";
+            showToolStripMenuItem.Click += showToolStripMenuItem_Click;
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(103, 22);
+            exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
+            // timerOne
+            // 
+            timerOne.Enabled = true;
+            timerOne.Interval = 60000;
+            timerOne.Tick += timerOne_Tick;
+            // 
+            // timerTwo
+            // 
+            timerTwo.Enabled = true;
+            timerTwo.Interval = 60000;
+            timerTwo.Tick += timerTwo_Tick;
+            // 
+            // timerThree
+            // 
+            timerThree.Enabled = true;
+            timerThree.Interval = 60000;
+            timerThree.Tick += timerThree_Tick;
+            // 
+            // timerFour
+            // 
+            timerFour.Enabled = true;
+            timerFour.Interval = 60000;
+            timerFour.Tick += timerFour_Tick;
+            // 
+            // timerFive
+            // 
+            timerFive.Enabled = true;
+            timerFive.Interval = 60000;
+            timerFive.Tick += timerFive_Tick;
             // 
             // Form1
             // 
@@ -118,9 +199,11 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LeitnerSystems";
-            Load += Form1_Load;
+            FormClosing += Form1_FormClosing;
+            Load += Form1_Resize;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -135,5 +218,15 @@
         private ToolStripButton toolStripButtonMoveToBoxOne;
         private ToolStripSeparator toolStripSeparator3;
         private Button buttonTest;
+        private NotifyIcon notifyIconLS;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem showToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Timer timerOne;
+        private ToolStripButton toolStripButtonTimers;
+        private System.Windows.Forms.Timer timerTwo;
+        private System.Windows.Forms.Timer timerThree;
+        private System.Windows.Forms.Timer timerFour;
+        private System.Windows.Forms.Timer timerFive;
     }
 }

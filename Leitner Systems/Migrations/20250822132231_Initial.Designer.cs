@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Leitner_Systems.Migrations
 {
     [DbContext(typeof(LeitnerSystemsContex))]
-    [Migration("20250818160532_ChangeNameOnTableEnBgWord")]
-    partial class ChangeNameOnTableEnBgWord
+    [Migration("20250822132231_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace Leitner_Systems.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Leitner_Systems.Leitner_Systems.Data.Models.BoxFive", b =>
+            modelBuilder.Entity("Leitner_Systems.LeitnerSystemsDataModels.BoxFive", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace Leitner_Systems.Migrations
                     b.ToTable("BoxFives");
                 });
 
-            modelBuilder.Entity("Leitner_Systems.Leitner_Systems.Data.Models.BoxFour", b =>
+            modelBuilder.Entity("Leitner_Systems.LeitnerSystemsDataModels.BoxFour", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,7 +73,7 @@ namespace Leitner_Systems.Migrations
                     b.ToTable("BoxFours");
                 });
 
-            modelBuilder.Entity("Leitner_Systems.Leitner_Systems.Data.Models.BoxOne", b =>
+            modelBuilder.Entity("Leitner_Systems.LeitnerSystemsDataModels.BoxOne", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,7 +97,7 @@ namespace Leitner_Systems.Migrations
                     b.ToTable("BoxOnes");
                 });
 
-            modelBuilder.Entity("Leitner_Systems.Leitner_Systems.Data.Models.BoxThree", b =>
+            modelBuilder.Entity("Leitner_Systems.LeitnerSystemsDataModels.BoxThree", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -121,7 +121,7 @@ namespace Leitner_Systems.Migrations
                     b.ToTable("BoxThrees");
                 });
 
-            modelBuilder.Entity("Leitner_Systems.Leitner_Systems.Data.Models.BoxTwo", b =>
+            modelBuilder.Entity("Leitner_Systems.LeitnerSystemsDataModels.BoxTwo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -145,7 +145,7 @@ namespace Leitner_Systems.Migrations
                     b.ToTable("BoxTwos");
                 });
 
-            modelBuilder.Entity("Leitner_Systems.Leitner_Systems.Data.Models.EnBgWord", b =>
+            modelBuilder.Entity("Leitner_Systems.LeitnerSystemsDataModels.EnBgWord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -167,6 +167,85 @@ namespace Leitner_Systems.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EnBgWords");
+                });
+
+            modelBuilder.Entity("Leitner_Systems.LeitnerSystemsDataModels.Tmr", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BoxFive")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BoxFour")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BoxOne")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BoxThree")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BoxTwo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("InsertDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MHD")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Timers");
+                });
+
+            modelBuilder.Entity("Leitner_Systems.LeitnerSystemsDataModels.WordMovement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BgWord")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisplayLanguage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnWord")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromBox")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Hint")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("InsertDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ToBox")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WordMovements");
                 });
 #pragma warning restore 612, 618
         }

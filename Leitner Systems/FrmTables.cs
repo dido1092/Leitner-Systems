@@ -100,6 +100,8 @@ namespace Leitner_Systems
         private void Update(string tableName)
         {
             string connectionString = null;
+            string? columnName = null;
+
             connectionString = DbConfig.ConnectionString;
 
             SqlConnection cnn = new SqlConnection(connectionString);
@@ -109,7 +111,7 @@ namespace Leitner_Systems
             int rowindex = dataGridViewTables.CurrentRow.Index;
             int colindex = dataGridViewTables.CurrentCell.ColumnIndex;
 
-            string? columnName = dataGridViewTables.Columns[colindex].HeaderText;
+            columnName = dataGridViewTables.Columns[colindex].HeaderText;
 
             string? getValue = dataGridViewTables.CurrentCell.Value.ToString();
             string? id = dataGridViewTables.Rows[rowindex].Cells[0].Value.ToString();
@@ -121,7 +123,16 @@ namespace Leitner_Systems
                     cnn.Open();
                     string sqlCommand = $"Update {tableName} set {columnName}=@{columnName} Where Id={id}";
                     cmd = new SqlCommand(sqlCommand, cnn);
-                    cmd.Parameters.AddWithValue($"@{columnName}", getValue);
+
+                    if (colindex == 3 || colindex == 4)
+                    {
+                        cmd.Parameters.AddWithValue($"@{columnName}", DateTime.Parse(getValue!));
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue($"@{columnName}", getValue);
+                    }
+
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected == 1)
                     {
@@ -132,7 +143,7 @@ namespace Leitner_Systems
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

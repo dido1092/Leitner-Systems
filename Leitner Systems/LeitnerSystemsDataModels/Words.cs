@@ -18,5 +18,7 @@ namespace Leitner_Systems.LeitnerSystemsDataModels
         public string EnWord { get; set; }
 
         public string BgWord { get; set; }
+
+        public DateTime PerformanceTime { get; set; }
     }
 }

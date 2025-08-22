@@ -7,11 +7,26 @@ namespace Leitner_Systems
     {
         LeitnerSystemsContex context = new LeitnerSystemsContex();
 
+        //FormClosingEventArgs е = new FormClosingEventArgs(CloseReason.UserClosing, false);
+
+        //Form1 form1 = new Form1();
+
         public FrmMoveToBoxOne()
         {
             InitializeComponent();
         }
-
+        //=========================================================================
+        //protected override void OnFormClosing(FormClosingEventArgs e)
+        //{
+        //    if (e.CloseReason == CloseReason.UserClosing)
+        //    {
+        //        e.Cancel = true; // Prevent form from closing/disposing
+        //        this.Hide();     // Just hide it instead
+        //        return;
+        //    }
+        //    base.OnFormClosing(e);
+        //}
+        //=========================================================================
         private void buttonLoadEnBgWords_Click(object sender, EventArgs e)
         {
             richTextBoxEnBgWords.Clear();
@@ -61,6 +76,14 @@ namespace Leitner_Systems
 
             string[] arrWords = words.Split("-");
 
+            var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
+
+            double intervalMilisec = 0;
+
+            intervalMilisec = SetTimers(intervalMilisec);
+
+            intervalMilisec *= int.Parse(timers!.BoxOne);
+
             if (arrWords.Length == 2)
             {
                 BoxOne boxOne = new BoxOne()
@@ -68,12 +91,40 @@ namespace Leitner_Systems
                     EnWord = arrWords[0],
                     BgWord = arrWords[1],
                     InsertDate = DateTime.Now,
+                    PerformanceTime = DateTime.Now.AddMilliseconds(intervalMilisec)
                 };
                 context.Add(boxOne);
                 context.SaveChanges();
 
                 MessageBox.Show("Done!");
             }
+        }
+
+        private void FrmMoveToBoxOne_Load(object sender, EventArgs e)
+        {
+
+        }
+        public double SetTimers(double interval)
+        {
+            var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive, t.MHD }).FirstOrDefault();
+
+            if (timers != null)
+            {
+                if (timers.MHD == "Mins")
+                {
+                    interval = 60000; // 1 minute
+                }
+                else if (timers.MHD == "Hours")
+                {
+                    interval = 3600000; // 1 hour
+                }
+                else if (timers.MHD == "Days")
+                {
+                    interval = 86400000; // 1 day
+                }
+            }
+
+            return interval;
         }
     }
 }

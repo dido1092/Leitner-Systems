@@ -20,26 +20,12 @@ namespace Leitner_Systems
 
             if (enW.Length > 0 && bgW.Length > 0)
             {
-                if (!checkBoxInBoxOne.Checked)
-                {
-                    EnBgWord enBgWord = new EnBgWord()
-                    {
-                        EnWord = enW,
-                        BgWord = bgW,
-                        DateTime = DateTime.Now,
-                    };
-                    context.Add(enBgWord);
-                }
-                else
-                {
-                    EnBgWord enBgWord = new EnBgWord()
-                    {
-                        EnWord = enW,
-                        BgWord = bgW,
-                        DateTime = DateTime.Now,
-                    };
-                    context.Add(enBgWord);
+                var enBgWords = context.EnBgWords!.Where(x => x.EnWord == enW && x.BgWord == bgW).FirstOrDefault();
 
+                var boxOneWords = context.BoxOnes!.Where(x => x.EnWord == enW && x.BgWord == bgW).FirstOrDefault();
+
+                if (checkBoxInBoxOne.Checked && boxOneWords == null)
+                {
                     BoxOne boxOne = new BoxOne()
                     {
                         EnWord = enW,
@@ -47,6 +33,16 @@ namespace Leitner_Systems
                         InsertDate = DateTime.Now
                     };
                     context.BoxOnes!.Add(boxOne);
+                }
+                if (enBgWords == null)
+                {
+                    EnBgWord enBgWord = new EnBgWord()
+                    {
+                        EnWord = enW,
+                        BgWord = bgW,
+                        DateTime = DateTime.Now,
+                    };
+                    context.Add(enBgWord);
                 }
 
                 context.SaveChanges();

@@ -82,7 +82,7 @@
             // buttonDelete
             // 
             buttonDelete.Enabled = false;
-            buttonDelete.Location = new Point(476, 698);
+            buttonDelete.Location = new Point(722, 698);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(89, 29);
             buttonDelete.TabIndex = 4;
@@ -92,7 +92,7 @@
             // 
             // buttonUpDate
             // 
-            buttonUpDate.Location = new Point(476, 161);
+            buttonUpDate.Location = new Point(722, 161);
             buttonUpDate.Name = "buttonUpDate";
             buttonUpDate.Size = new Size(89, 29);
             buttonUpDate.TabIndex = 4;
@@ -102,7 +102,7 @@
             // 
             // buttonInsert
             // 
-            buttonInsert.Location = new Point(476, 36);
+            buttonInsert.Location = new Point(722, 36);
             buttonInsert.Name = "buttonInsert";
             buttonInsert.Size = new Size(89, 23);
             buttonInsert.TabIndex = 5;
@@ -166,14 +166,14 @@
             dataGridViewTables.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTables.Location = new Point(13, 161);
             dataGridViewTables.Name = "dataGridViewTables";
-            dataGridViewTables.Size = new Size(448, 566);
+            dataGridViewTables.Size = new Size(703, 566);
             dataGridViewTables.TabIndex = 12;
             // 
             // FrmTables
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(603, 765);
+            ClientSize = new Size(878, 765);
             Controls.Add(dataGridViewTables);
             Controls.Add(buttonLoad);
             Controls.Add(label1);

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTest));
             comboBoxLanguage = new ComboBox();
             label1 = new Label();
@@ -37,16 +36,14 @@
             textBoxWord = new TextBox();
             buttonCheckWord = new Button();
             labelTimers = new Label();
-            timerBoxOne = new System.Windows.Forms.Timer(components);
-            timerBoxTwo = new System.Windows.Forms.Timer(components);
-            timerBoxThree = new System.Windows.Forms.Timer(components);
-            timerBoxFour = new System.Windows.Forms.Timer(components);
-            timerBoxFive = new System.Windows.Forms.Timer(components);
             labelInfo = new Label();
             pictureBoxSpeech = new PictureBox();
             comboBoxBoxes = new ComboBox();
             labelBoxes = new Label();
             progressBarWords = new ProgressBar();
+            labelWordWord = new Label();
+            buttonHint = new Button();
+            labelNumWords = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSpeech).BeginInit();
             SuspendLayout();
             // 
@@ -83,7 +80,7 @@
             // 
             labelWord.AutoSize = true;
             labelWord.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelWord.Location = new Point(196, 107);
+            labelWord.Location = new Point(196, 95);
             labelWord.Name = "labelWord";
             labelWord.Size = new Size(111, 47);
             labelWord.TabIndex = 3;
@@ -161,11 +158,43 @@
             progressBarWords.Size = new Size(244, 12);
             progressBarWords.TabIndex = 11;
             // 
+            // labelWordWord
+            // 
+            labelWordWord.AutoSize = true;
+            labelWordWord.Location = new Point(196, 159);
+            labelWordWord.Name = "labelWordWord";
+            labelWordWord.Size = new Size(72, 15);
+            labelWordWord.TabIndex = 12;
+            labelWordWord.Text = "word - word";
+            // 
+            // buttonHint
+            // 
+            buttonHint.Enabled = false;
+            buttonHint.Location = new Point(631, 46);
+            buttonHint.Name = "buttonHint";
+            buttonHint.Size = new Size(75, 23);
+            buttonHint.TabIndex = 13;
+            buttonHint.Text = "Hint";
+            buttonHint.UseVisualStyleBackColor = true;
+            buttonHint.Click += buttonHint_Click;
+            // 
+            // labelNumWords
+            // 
+            labelNumWords.AutoSize = true;
+            labelNumWords.Location = new Point(22, 95);
+            labelNumWords.Name = "labelNumWords";
+            labelNumWords.Size = new Size(44, 15);
+            labelNumWords.TabIndex = 14;
+            labelNumWords.Text = "Words:";
+            // 
             // FrmTest
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(769, 424);
+            Controls.Add(labelNumWords);
+            Controls.Add(buttonHint);
+            Controls.Add(labelWordWord);
             Controls.Add(progressBarWords);
             Controls.Add(labelBoxes);
             Controls.Add(comboBoxBoxes);
@@ -183,6 +212,7 @@
             Name = "FrmTest";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmTest";
+            Load += FrmTest_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxSpeech).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -197,15 +227,13 @@
         private TextBox textBoxWord;
         private Button buttonCheckWord;
         private Label labelTimers;
-        private System.Windows.Forms.Timer timerBoxOne;
-        private System.Windows.Forms.Timer timerBoxTwo;
-        private System.Windows.Forms.Timer timerBoxThree;
-        private System.Windows.Forms.Timer timerBoxFour;
-        private System.Windows.Forms.Timer timerBoxFive;
         private Label labelInfo;
         private PictureBox pictureBoxSpeech;
         private ComboBox comboBoxBoxes;
         private Label labelBoxes;
         private ProgressBar progressBarWords;
+        private Label labelWordWord;
+        private Button buttonHint;
+        private Label labelNumWords;
     }
 }

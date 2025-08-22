@@ -82,6 +82,7 @@
             Controls.Add(buttonLoadEnBgWords);
             Name = "FrmMoveToBoxOne";
             Text = "FrmMoveToBoxOne";
+            Load += FrmMoveToBoxOne_Load;
             ResumeLayout(false);
             PerformLayout();
         }
