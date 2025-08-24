@@ -81,7 +81,6 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Enabled = false;
             buttonDelete.Location = new Point(722, 698);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(89, 29);

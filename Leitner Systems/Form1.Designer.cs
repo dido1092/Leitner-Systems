@@ -38,6 +38,8 @@
             toolStripButtonMoveToBoxOne = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
             toolStripButtonTimers = new ToolStripButton();
+            toolStripSeparator4 = new ToolStripSeparator();
+            toolStripButtonChart = new ToolStripButton();
             buttonTest = new Button();
             notifyIconLS = new NotifyIcon(components);
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -48,13 +50,15 @@
             timerThree = new System.Windows.Forms.Timer(components);
             timerFour = new System.Windows.Forms.Timer(components);
             timerFive = new System.Windows.Forms.Timer(components);
+            toolStripButtonWordMovement = new ToolStripButton();
+            toolStripSeparator5 = new ToolStripSeparator();
             toolStrip1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonInsert, toolStripSeparator1, toolStripButtonTables, toolStripSeparator2, toolStripButtonMoveToBoxOne, toolStripSeparator3, toolStripButtonTimers });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonInsert, toolStripSeparator1, toolStripButtonMoveToBoxOne, toolStripSeparator2, toolStripButtonTables, toolStripSeparator3, toolStripButtonChart, toolStripSeparator4, toolStripButtonWordMovement, toolStripSeparator5, toolStripButtonTimers });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(676, 25);
@@ -115,6 +119,21 @@
             toolStripButtonTimers.Size = new Size(23, 22);
             toolStripButtonTimers.Text = "Timers";
             toolStripButtonTimers.Click += toolStripButtonTimers_Click;
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 25);
+            // 
+            // toolStripButtonChart
+            // 
+            toolStripButtonChart.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonChart.Image = (Image)resources.GetObject("toolStripButtonChart.Image");
+            toolStripButtonChart.ImageTransparentColor = Color.Magenta;
+            toolStripButtonChart.Name = "toolStripButtonChart";
+            toolStripButtonChart.Size = new Size(23, 22);
+            toolStripButtonChart.Text = "Charts";
+            toolStripButtonChart.Click += toolStripButtonChart_Click;
             // 
             // buttonTest
             // 
@@ -186,6 +205,21 @@
             timerFive.Interval = 60000;
             timerFive.Tick += timerFive_Tick;
             // 
+            // toolStripButtonWordMovement
+            // 
+            toolStripButtonWordMovement.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonWordMovement.Image = (Image)resources.GetObject("toolStripButtonWordMovement.Image");
+            toolStripButtonWordMovement.ImageTransparentColor = Color.Magenta;
+            toolStripButtonWordMovement.Name = "toolStripButtonWordMovement";
+            toolStripButtonWordMovement.Size = new Size(23, 22);
+            toolStripButtonWordMovement.Text = "Word Movements";
+            toolStripButtonWordMovement.Click += toolStripButtonWordMovement_Click;
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 25);
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -228,5 +262,9 @@
         private System.Windows.Forms.Timer timerThree;
         private System.Windows.Forms.Timer timerFour;
         private System.Windows.Forms.Timer timerFive;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripButton toolStripButtonChart;
+        private ToolStripButton toolStripButtonWordMovement;
+        private ToolStripSeparator toolStripSeparator5;
     }
 }

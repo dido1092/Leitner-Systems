@@ -4,6 +4,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Leitner_Systems
 {
@@ -172,35 +173,33 @@ namespace Leitner_Systems
         private void Delete(string tableName)
         {
             DataGridViewCell cell = dataGridViewTables.SelectedCells[0] as DataGridViewCell;
-
             string value = cell.Value.ToString()!;
-            int getEventId = int.Parse(value!);
+            int getID = int.Parse(value);
 
-            var eventIdBoxOnes = context.BoxOnes!.Where(v => v.Id == getEventId).FirstOrDefault();
-            var eventIdEnBgWords = context.EnBgWords!.Where(v => v.Id == getEventId).FirstOrDefault();
+            //Remove row from DataGridView
+            int rowIndex = dataGridViewTables.CurrentCell.RowIndex;
+            this.dataGridViewTables.Rows.RemoveAt(rowIndex);
 
+            //String Connection
+            string connetionString = string.Empty;
+            connetionString = DbConfig.ConnectionString;
+            SqlConnection cnn = new SqlConnection(connetionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnn;
+
+            //Delete from DB
+            cmd.CommandText = ($"Delete From {tableName} Where Id = " + getID + "");
 
             try
             {
-                if (comboBoxTables.Text == "BoxOnes" && eventIdBoxOnes != null)
-                {
-                    context.BoxOnes!.Remove(eventIdBoxOnes!);
-
-                }
-                else if (comboBoxTables.Text == "EnBgWords" && eventIdEnBgWords != null)
-                {
-                    context.EnBgWords!.Remove(eventIdEnBgWords!);
-                }
-
-                context.SaveChanges();
-
-                MessageBox.Show($"The Row with id: '{getEventId}' has been deleted! ");
-
-                LoadTable();
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("The row has been deleted ! ");
+                cnn.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("The Event Can'not deleted! ");
+                MessageBox.Show("Cannot open connection ! ");
             }
         }
 
@@ -230,14 +229,14 @@ namespace Leitner_Systems
                 CountRows();
             }
 
-            if (tableName == "BoxOnes" || tableName == "EnBgWords")
-            {
-                buttonDelete.Enabled = true;
-            }
-            else
-            {
-                buttonDelete.Enabled = false;
-            }
+            //if (tableName == "BoxOnes" || tableName == "EnBgWords")
+            //{
+            //    buttonDelete.Enabled = true;
+            //}
+            //else
+            //{
+            //    buttonDelete.Enabled = false;
+            //}
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Leitner_Systems
     public partial class Form1 : Form
     {
         LeitnerSystemsContex context = new LeitnerSystemsContex();
-        
+
         FrmTest frmTest = new FrmTest();
         public Form1()
         {
@@ -296,7 +296,17 @@ namespace Leitner_Systems
             frmTimers.Show();
         }
 
+        private void toolStripButtonChart_Click(object sender, EventArgs e)
+        {
+            FrmCharts frmCharts = new FrmCharts();
+            frmCharts.Show();
+        }
 
+        private void toolStripButtonWordMovement_Click(object sender, EventArgs e)
+        {
+            FrmWordMovement frmWordMovement = new FrmWordMovement();
+            frmWordMovement.Show();
+        }
     }
 }
 
