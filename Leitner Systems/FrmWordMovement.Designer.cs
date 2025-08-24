@@ -115,7 +115,7 @@
             // 
             // buttonRefresh
             // 
-            buttonRefresh.Location = new Point(957, 22);
+            buttonRefresh.Location = new Point(990, 23);
             buttonRefresh.Name = "buttonRefresh";
             buttonRefresh.Size = new Size(97, 37);
             buttonRefresh.TabIndex = 1;

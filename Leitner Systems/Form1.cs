@@ -140,15 +140,8 @@ namespace Leitner_Systems
                 {
                     DateTime performanceTime = getBoxOne!.PerformanceTime;
 
-                    //DateTime insertDate = getBoxOne.InsertDate;
-
                     if (performanceTime <= DateTime.Now.AddMilliseconds(1))
                     {
-                        //int interval = int.Parse(SetTimers(0).ToString());
-
-                        //timerOne.Interval = int.Parse(timers!.BoxOne) * interval;
-                        //timerOne.Interval = (int)performanceTime;
-
                         frmTest.LoadBox("BoxOne");
 
                         frmTest.Show();
@@ -168,17 +161,8 @@ namespace Leitner_Systems
                 {
                     DateTime performanceTime = getBoxTwo!.PerformanceTime;
 
-                    //DateTime insertDate = getBoxTwo.InsertDate;
-
                     if (performanceTime <= DateTime.Now.AddMilliseconds(1))
                     {
-                        //int interval = int.Parse(SetTimers(0).ToString());
-
-                        //timerTwo.Interval = int.Parse(timers!.BoxTwo) * interval;
-                        //timerTwo.Interval = (int)performanceTime;
-
-
-                        //FrmTest frmTest = new FrmTest();
                         frmTest.LoadBox("BoxTwo");
                         frmTest.Show();
                     }
@@ -197,16 +181,8 @@ namespace Leitner_Systems
                 {
                     DateTime performanceTime = getBoxThree!.PerformanceTime;
 
-                    //DateTime insertDate = getBoxThree.InsertDate;
-
                     if (performanceTime <= DateTime.Now.AddMilliseconds(1))
                     {
-                        //int interval = int.Parse(SetTimers(0).ToString());
-
-                        //timerThree.Interval = int.Parse(timers!.BoxThree) * interval;
-                        //timerThree.Interval = (int)performanceTime;
-
-                        //FrmTest frmTest = new FrmTest();
                         frmTest.LoadBox("BoxThree");
                         frmTest.Show();
                     }
@@ -225,15 +201,8 @@ namespace Leitner_Systems
                 {
                     DateTime performanceTime = getBoxFour!.PerformanceTime;
 
-                    //DateTime insertDate = getBoxFour.InsertDate;
-
                     if (performanceTime <= DateTime.Now.AddMilliseconds(1))
                     {
-                        //int interval = int.Parse(SetTimers(0).ToString());
-
-                        //timerFour.Interval = (int)performanceTime;
-
-                        //FrmTest frmTest = new FrmTest();
                         frmTest.LoadBox("BoxFour");
                         frmTest.Show();
                     }
@@ -252,15 +221,8 @@ namespace Leitner_Systems
                 {
                     DateTime performanceTime = getBoxFive!.PerformanceTime;
 
-                    //DateTime insertDate = getBoxFive.InsertDate;
-
                     if (performanceTime <= DateTime.Now.AddMilliseconds(1))
                     {
-                        //int interval = int.Parse(SetTimers(0).ToString());
-
-                        //timerFive.Interval = (int)performanceTime;
-
-                        //FrmTest frmTest = new FrmTest();
                         frmTest.LoadBox("BoxFive");
                         frmTest.Show();
                     }
