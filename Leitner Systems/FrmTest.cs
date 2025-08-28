@@ -21,6 +21,7 @@ namespace Leitner_Systems
         private List<int> lsIds = new List<int>();
         private List<Words> lsWords = new List<Words>();
         private bool isHint = false;
+        private int numWords = 0;
         public FrmTest()
         {
             OnFormClosing(е);
@@ -80,7 +81,7 @@ namespace Leitner_Systems
             string currentWordEn = string.Empty;
 
             string word = labelWord.Text;
-            string writingWord = textBoxWord.Text.ToUpper().Replace(" ", "");
+            string writingWord = textBoxWord.Text.ToUpper();
             string[] arrWritingWords = writingWord.Split("-");
 
             //Form1 form1 = new Form1();
@@ -95,8 +96,8 @@ namespace Leitner_Systems
                 {
                     var getWord = lsWords.Select(i => new { i.Id, i.BgWord, i.EnWord, i.PerformanceTime }).Where(i => i.Id == lsIds[index] && i.PerformanceTime <= DateTime.Now).FirstOrDefault()!;
 
-                    currentWordBg = getWord.BgWord.ToUpper().Replace(" ", "");
-                    currentWordEn = getWord.EnWord.ToUpper().Replace(" ", "");
+                    currentWordBg = getWord.BgWord.ToUpper().TrimEnd();
+                    currentWordEn = getWord.EnWord.ToUpper().TrimEnd();
 
                     if (arrWritingWords[0] == currentWordBg && arrWritingWords[1] == currentWordEn)
                     {
@@ -273,8 +274,8 @@ namespace Leitner_Systems
                 {
                     var getWord = lsWords.Select(i => new { i.Id, i.EnWord, i.BgWord }).Where(i => i.Id == lsIds[index]).FirstOrDefault()!;
 
-                    currentWordBg = getWord.BgWord.ToUpper().Replace(" ", "");
-                    currentWordEn = getWord.EnWord.ToUpper().Replace(" ", "");
+                    currentWordBg = getWord.BgWord.ToUpper().TrimEnd();
+                    currentWordEn = getWord.EnWord.ToUpper().TrimEnd();
 
                     if (arrWritingWords[0] == currentWordEn && arrWritingWords[1] == currentWordBg)
                     {
@@ -331,7 +332,7 @@ namespace Leitner_Systems
                                 context.BoxThrees!.Remove(wordForDelete!);
                             }
 
-                            intervalMilisec *= int.Parse(timers!.BoxThree);
+                            intervalMilisec *= int.Parse(timers!.BoxFour);
 
                             BoxFour boxFour = new BoxFour()
                             {
@@ -353,7 +354,7 @@ namespace Leitner_Systems
                                 context.BoxFours!.Remove(wordForDelete!);
                             }
 
-                            intervalMilisec *= int.Parse(timers!.BoxThree);
+                            intervalMilisec *= int.Parse(timers!.BoxFive);
 
                             BoxFive boxFive = new BoxFive()
                             {
@@ -375,7 +376,7 @@ namespace Leitner_Systems
                                 context.BoxFives!.Remove(wordForDelete!);
                             }
 
-                            intervalMilisec *= int.Parse(timers!.BoxThree);
+                            intervalMilisec *= int.Parse(timers!.BoxFive);
 
                             BoxFive boxFive = new BoxFive()
                             {
@@ -482,13 +483,13 @@ namespace Leitner_Systems
 
                         if (comboBoxLanguage.Text == "EN")
                         {
-                            nextWordEn = getNextWord.EnWord.ToUpper().Replace(" ", "");
+                            nextWordEn = getNextWord.EnWord.ToUpper();
 
                             labelWord.Text = nextWordEn;
                         }
                         else if (comboBoxLanguage.Text == "BG")
                         {
-                            nextWordBg = getNextWord.BgWord.ToUpper().Replace(" ", "");
+                            nextWordBg = getNextWord.BgWord.ToUpper();
 
                             labelWord.Text = nextWordBg;
                         }
@@ -498,6 +499,9 @@ namespace Leitner_Systems
                             progressBarWords.Value++;
 
                         }
+
+                        labelNumWords.Text = $"Words: {numWords--}";
+
 
                         labelInfo.Text = $"Word go to box: {goToBox}";
                     }
@@ -512,13 +516,12 @@ namespace Leitner_Systems
                         index = 0;
 
                         labelInfo.Text = $"Word go to box: {goToBox}";
+                        labelNumWords.Text = $"Words: {numWords--}";
 
                         LoadTest();
 
                         return;
                     }
-
-                    //labelInfo.Text = $"Word go to box: {goToBox}";
 
                     textBoxWord.Text = string.Empty;
 
@@ -551,9 +554,6 @@ namespace Leitner_Systems
 
         public void LoadTest()
         {
-            int numWords = 0;
-
-
             lsWords = new List<Words>();
 
             var wordsBoxOne = context.BoxOnes!.Select(w => new { w.Id, w.EnWord, w.BgWord, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).ToList();
@@ -662,7 +662,7 @@ namespace Leitner_Systems
             isHint = false;
 
             labelWord.Text = firstWord.ToString();
-            labelNumWords.Text = $"Words: {numWords}";
+            labelNumWords.Text = $"Words: {numWords--}";
         }
 
         private List<Words> AddWords(int id, string enW, string bgW, DateTime PerformanceTime)

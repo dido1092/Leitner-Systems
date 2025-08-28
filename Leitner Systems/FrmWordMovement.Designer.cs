@@ -30,6 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             dataGridViewWordMovement = new DataGridView();
+            labelLine = new Label();
+            buttonRefresh = new Button();
+            wordMovementBindingSource = new BindingSource(components);
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             enWordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             bgWordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -38,9 +41,6 @@
             displayLanguageDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             hintDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             insertDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            wordMovementBindingSource = new BindingSource(components);
-            buttonRefresh = new Button();
-            labelLines = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewWordMovement).BeginInit();
             ((System.ComponentModel.ISupportInitialize)wordMovementBindingSource).BeginInit();
             SuspendLayout();
@@ -51,10 +51,33 @@
             dataGridViewWordMovement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewWordMovement.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, enWordDataGridViewTextBoxColumn, bgWordDataGridViewTextBoxColumn, fromBoxDataGridViewTextBoxColumn, toBoxDataGridViewTextBoxColumn, displayLanguageDataGridViewTextBoxColumn, hintDataGridViewCheckBoxColumn, insertDateDataGridViewTextBoxColumn });
             dataGridViewWordMovement.DataSource = wordMovementBindingSource;
-            dataGridViewWordMovement.Location = new Point(12, 87);
+            dataGridViewWordMovement.Location = new Point(23, 110);
             dataGridViewWordMovement.Name = "dataGridViewWordMovement";
-            dataGridViewWordMovement.Size = new Size(940, 596);
+            dataGridViewWordMovement.Size = new Size(861, 538);
             dataGridViewWordMovement.TabIndex = 0;
+            // 
+            // labelLine
+            // 
+            labelLine.AutoSize = true;
+            labelLine.Location = new Point(23, 663);
+            labelLine.Name = "labelLine";
+            labelLine.Size = new Size(34, 15);
+            labelLine.TabIndex = 1;
+            labelLine.Text = "Lines";
+            // 
+            // buttonRefresh
+            // 
+            buttonRefresh.Location = new Point(936, 32);
+            buttonRefresh.Name = "buttonRefresh";
+            buttonRefresh.Size = new Size(96, 34);
+            buttonRefresh.TabIndex = 2;
+            buttonRefresh.Text = "Refresh";
+            buttonRefresh.UseVisualStyleBackColor = true;
+            buttonRefresh.Click += buttonRefresh_Click;
+            // 
+            // wordMovementBindingSource
+            // 
+            wordMovementBindingSource.DataSource = typeof(LeitnerSystemsDataModels.WordMovement);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -78,14 +101,12 @@
             // 
             // fromBoxDataGridViewTextBoxColumn
             // 
-            fromBoxDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             fromBoxDataGridViewTextBoxColumn.DataPropertyName = "FromBox";
             fromBoxDataGridViewTextBoxColumn.HeaderText = "FromBox";
             fromBoxDataGridViewTextBoxColumn.Name = "fromBoxDataGridViewTextBoxColumn";
             // 
             // toBoxDataGridViewTextBoxColumn
             // 
-            toBoxDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             toBoxDataGridViewTextBoxColumn.DataPropertyName = "ToBox";
             toBoxDataGridViewTextBoxColumn.HeaderText = "ToBox";
             toBoxDataGridViewTextBoxColumn.Name = "toBoxDataGridViewTextBoxColumn";
@@ -109,36 +130,13 @@
             insertDateDataGridViewTextBoxColumn.HeaderText = "InsertDate";
             insertDateDataGridViewTextBoxColumn.Name = "insertDateDataGridViewTextBoxColumn";
             // 
-            // wordMovementBindingSource
-            // 
-            wordMovementBindingSource.DataSource = typeof(LeitnerSystemsDataModels.WordMovement);
-            // 
-            // buttonRefresh
-            // 
-            buttonRefresh.Location = new Point(990, 23);
-            buttonRefresh.Name = "buttonRefresh";
-            buttonRefresh.Size = new Size(97, 37);
-            buttonRefresh.TabIndex = 1;
-            buttonRefresh.Text = "Refresh";
-            buttonRefresh.UseVisualStyleBackColor = true;
-            buttonRefresh.Click += buttonRefresh_Click;
-            // 
-            // labelLines
-            // 
-            labelLines.AutoSize = true;
-            labelLines.Location = new Point(12, 686);
-            labelLines.Name = "labelLines";
-            labelLines.Size = new Size(34, 15);
-            labelLines.TabIndex = 2;
-            labelLines.Text = "Lines";
-            // 
             // FrmWordMovement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1118, 717);
-            Controls.Add(labelLines);
+            ClientSize = new Size(1091, 703);
             Controls.Add(buttonRefresh);
+            Controls.Add(labelLine);
             Controls.Add(dataGridViewWordMovement);
             Name = "FrmWordMovement";
             Text = "FrmWordMovement";
@@ -160,7 +158,7 @@
         private DataGridViewCheckBoxColumn hintDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn insertDateDataGridViewTextBoxColumn;
         private BindingSource wordMovementBindingSource;
+        private Label labelLine;
         private Button buttonRefresh;
-        private Label labelLines;
     }
 }

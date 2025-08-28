@@ -24,6 +24,7 @@ namespace Leitner_Systems
             TableWordMovement();
             CountRows();
         }
+
         private void TableWordMovement()
         {
             SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM WordMovements", DbConfig.ConnectionString);
@@ -35,7 +36,7 @@ namespace Leitner_Systems
         {
             int recordCount = dataGridViewWordMovement.RowCount;
 
-            labelLines.Text = $"Words: {recordCount - 1}"; // -1 because of the header row
+            labelLine.Text = $"Lines: {recordCount - 1}"; // -1 because of the header row
         }
     }
 }

@@ -25,11 +25,7 @@ namespace Leitner_Systems
         {
             RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true)!;
 
-            //if (chkStartUp.Checked)
-            rk.SetValue("EventsOrganizer", Application.ExecutablePath);
-            //else
-            //rk.DeleteValue(AppName, false);
-
+            rk.SetValue("LeitnerSystems", Application.ExecutablePath);
         }
         private void toolStripButtonInsert_Click(object sender, EventArgs e)
         {

@@ -33,13 +33,13 @@
             toolStrip1 = new ToolStrip();
             toolStripButtonInsert = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            toolStripButtonTables = new ToolStripButton();
-            toolStripSeparator2 = new ToolStripSeparator();
             toolStripButtonMoveToBoxOne = new ToolStripButton();
+            toolStripSeparator2 = new ToolStripSeparator();
+            toolStripButtonTables = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
-            toolStripButtonTimers = new ToolStripButton();
-            toolStripSeparator4 = new ToolStripSeparator();
             toolStripButtonChart = new ToolStripButton();
+            toolStripSeparator4 = new ToolStripSeparator();
+            toolStripButtonTimers = new ToolStripButton();
             buttonTest = new Button();
             notifyIconLS = new NotifyIcon(components);
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -50,15 +50,15 @@
             timerThree = new System.Windows.Forms.Timer(components);
             timerFour = new System.Windows.Forms.Timer(components);
             timerFive = new System.Windows.Forms.Timer(components);
-            toolStripButtonWordMovement = new ToolStripButton();
             toolStripSeparator5 = new ToolStripSeparator();
+            toolStripButtonWordMovement = new ToolStripButton();
             toolStrip1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonInsert, toolStripSeparator1, toolStripButtonMoveToBoxOne, toolStripSeparator2, toolStripButtonTables, toolStripSeparator3, toolStripButtonChart, toolStripSeparator4, toolStripButtonWordMovement, toolStripSeparator5, toolStripButtonTimers });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonInsert, toolStripSeparator1, toolStripButtonMoveToBoxOne, toolStripSeparator2, toolStripButtonTables, toolStripSeparator3, toolStripButtonWordMovement, toolStripSeparator5, toolStripButtonChart, toolStripSeparator4, toolStripButtonTimers });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(676, 25);
@@ -80,21 +80,6 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 25);
             // 
-            // toolStripButtonTables
-            // 
-            toolStripButtonTables.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButtonTables.Image = (Image)resources.GetObject("toolStripButtonTables.Image");
-            toolStripButtonTables.ImageTransparentColor = Color.Magenta;
-            toolStripButtonTables.Name = "toolStripButtonTables";
-            toolStripButtonTables.Size = new Size(23, 22);
-            toolStripButtonTables.Text = "Tables";
-            toolStripButtonTables.Click += toolStripButtonTables_Click;
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 25);
-            // 
             // toolStripButtonMoveToBoxOne
             // 
             toolStripButtonMoveToBoxOne.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -105,25 +90,25 @@
             toolStripButtonMoveToBoxOne.Text = "MoveToBoxOne";
             toolStripButtonMoveToBoxOne.Click += toolStripButtonMoveToBoxOne_Click;
             // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 25);
+            // 
+            // toolStripButtonTables
+            // 
+            toolStripButtonTables.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonTables.Image = (Image)resources.GetObject("toolStripButtonTables.Image");
+            toolStripButtonTables.ImageTransparentColor = Color.Magenta;
+            toolStripButtonTables.Name = "toolStripButtonTables";
+            toolStripButtonTables.Size = new Size(23, 22);
+            toolStripButtonTables.Text = "Tables";
+            toolStripButtonTables.Click += toolStripButtonTables_Click;
+            // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new Size(6, 25);
-            // 
-            // toolStripButtonTimers
-            // 
-            toolStripButtonTimers.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButtonTimers.Image = (Image)resources.GetObject("toolStripButtonTimers.Image");
-            toolStripButtonTimers.ImageTransparentColor = Color.Magenta;
-            toolStripButtonTimers.Name = "toolStripButtonTimers";
-            toolStripButtonTimers.Size = new Size(23, 22);
-            toolStripButtonTimers.Text = "Timers";
-            toolStripButtonTimers.Click += toolStripButtonTimers_Click;
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 25);
             // 
             // toolStripButtonChart
             // 
@@ -134,6 +119,21 @@
             toolStripButtonChart.Size = new Size(23, 22);
             toolStripButtonChart.Text = "Charts";
             toolStripButtonChart.Click += toolStripButtonChart_Click;
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 25);
+            // 
+            // toolStripButtonTimers
+            // 
+            toolStripButtonTimers.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonTimers.Image = (Image)resources.GetObject("toolStripButtonTimers.Image");
+            toolStripButtonTimers.ImageTransparentColor = Color.Magenta;
+            toolStripButtonTimers.Name = "toolStripButtonTimers";
+            toolStripButtonTimers.Size = new Size(23, 22);
+            toolStripButtonTimers.Text = "Timers";
+            toolStripButtonTimers.Click += toolStripButtonTimers_Click;
             // 
             // buttonTest
             // 
@@ -205,6 +205,11 @@
             timerFive.Interval = 60000;
             timerFive.Tick += timerFive_Tick;
             // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 25);
+            // 
             // toolStripButtonWordMovement
             // 
             toolStripButtonWordMovement.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -212,13 +217,8 @@
             toolStripButtonWordMovement.ImageTransparentColor = Color.Magenta;
             toolStripButtonWordMovement.Name = "toolStripButtonWordMovement";
             toolStripButtonWordMovement.Size = new Size(23, 22);
-            toolStripButtonWordMovement.Text = "Word Movements";
+            toolStripButtonWordMovement.Text = "Word Movement";
             toolStripButtonWordMovement.Click += toolStripButtonWordMovement_Click;
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 25);
             // 
             // Form1
             // 

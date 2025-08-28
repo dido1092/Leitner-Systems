@@ -2,6 +2,7 @@
 using Leitner_Systems.LeitnerSystemsDataCommon;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
 using System.Windows.Forms;
@@ -174,6 +175,7 @@ namespace Leitner_Systems
         {
             DataGridViewCell cell = dataGridViewTables.SelectedCells[0] as DataGridViewCell;
             string value = cell.Value.ToString()!;
+
             int getID = int.Parse(value);
 
             //Remove row from DataGridView
@@ -228,15 +230,116 @@ namespace Leitner_Systems
 
                 CountRows();
             }
+        }
 
-            //if (tableName == "BoxOnes" || tableName == "EnBgWords")
-            //{
-            //    buttonDelete.Enabled = true;
-            //}
-            //else
-            //{
-            //    buttonDelete.Enabled = false;
-            //}
+        private void buttonSet_Click(object sender, EventArgs e)
+        {
+            string setTo = comboBoxSet.Text;
+            string tableName = comboBoxTables.Text;
+
+            if (setTo == "=Now")
+            {
+                Set(tableName, DateTime.Now);
+
+                MessageBox.Show("Set completed!");
+            }
+            else if (setTo == "=InsertDate")
+            {
+                List<DateTime> insertDate = GetInsertDate(tableName);
+
+                foreach (var insD in insertDate)
+                {
+                    Set(tableName, insD);
+                }
+
+                MessageBox.Show("Set completed!");
+            }
+            else if (setTo == "=First")//=First PerformanceTime
+            {
+                DateTime getPerformanceTime = GetPerformanceTime(tableName);
+
+                Set(tableName, getPerformanceTime);
+
+                MessageBox.Show("Set completed!");
+            }
+
+            LoadTable();
+        }
+        private DateTime GetPerformanceTime(string tableName)
+        {
+            DateTime performanceTime = DateTime.MinValue;
+
+            string sql = $"SELECT PerformanceTime FROM {tableName}";
+            using (SqlConnection conn = new SqlConnection(DbConfig.ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        performanceTime = reader.GetDateTime(0); // column index
+                    }
+                }
+            }
+            return performanceTime;
+        }
+        private List<DateTime> GetInsertDate(string tableName)
+        {
+            List<DateTime> insertDates = new List<DateTime>();
+
+            string sql = $"SELECT InsertDate FROM {tableName}";
+
+            using (SqlConnection conn = new SqlConnection(DbConfig.ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        insertDates.Add(reader.GetDateTime(0)); // column index
+                    }
+                }
+            }
+            return insertDates;
+        }
+        private void Set(string tableName, DateTime performanceTime)
+        {
+            SqlConnection cnn = new SqlConnection(DbConfig.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnn;
+
+            int rowindex = dataGridViewTables.CurrentRow.Index;
+            int colindex = dataGridViewTables.CurrentCell.ColumnIndex;
+
+            //string columnName = dataGridViewTables.Columns[colindex].HeaderText;
+
+            string? getValue = dataGridViewTables.CurrentCell.Value.ToString();
+            string? id = dataGridViewTables.Rows[rowindex].Cells[0].Value.ToString();
+
+            try
+            {
+                using (cnn = new SqlConnection(DbConfig.ConnectionString))
+                {
+                    cnn.Open();
+                    string sqlCommand = $"Update {tableName} set PerformanceTime=@PerformanceTime";
+                    cmd = new SqlCommand(sqlCommand, cnn);
+
+                    cmd.Parameters.AddWithValue($"@PerformanceTime", performanceTime);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected == 1)
+                    {
+                        MessageBox.Show("Information Updated", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    cnn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

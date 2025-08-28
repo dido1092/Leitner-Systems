@@ -52,12 +52,17 @@
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             insertDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             performanceTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            wordMovementBindingSource = new BindingSource(components);
+            buttonSet = new Button();
+            label2 = new Label();
+            comboBoxSet = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)boxOneBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTables).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)wordMovementBindingSource).BeginInit();
             SuspendLayout();
             // 
             // labelWords
@@ -73,14 +78,14 @@
             // 
             textBoxSearch.Location = new Point(12, 122);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(321, 23);
+            textBoxSearch.Size = new Size(164, 23);
             textBoxSearch.TabIndex = 2;
             // 
             // buttonSearch
             // 
-            buttonSearch.Location = new Point(339, 122);
+            buttonSearch.Location = new Point(182, 122);
             buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(122, 23);
+            buttonSearch.Size = new Size(115, 23);
             buttonSearch.TabIndex = 3;
             buttonSearch.Text = "SEARCH";
             buttonSearch.UseVisualStyleBackColor = true;
@@ -88,7 +93,7 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(722, 698);
+            buttonDelete.Location = new Point(645, 698);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(89, 29);
             buttonDelete.TabIndex = 4;
@@ -98,7 +103,7 @@
             // 
             // buttonUpDate
             // 
-            buttonUpDate.Location = new Point(722, 161);
+            buttonUpDate.Location = new Point(645, 161);
             buttonUpDate.Name = "buttonUpDate";
             buttonUpDate.Size = new Size(89, 29);
             buttonUpDate.TabIndex = 4;
@@ -108,7 +113,7 @@
             // 
             // buttonInsert
             // 
-            buttonInsert.Location = new Point(722, 36);
+            buttonInsert.Location = new Point(645, 36);
             buttonInsert.Name = "buttonInsert";
             buttonInsert.Size = new Size(89, 23);
             buttonInsert.TabIndex = 5;
@@ -179,7 +184,7 @@
             dataGridViewTables.DataSource = boxOneBindingSource;
             dataGridViewTables.Location = new Point(13, 161);
             dataGridViewTables.Name = "dataGridViewTables";
-            dataGridViewTables.Size = new Size(703, 566);
+            dataGridViewTables.Size = new Size(623, 566);
             dataGridViewTables.TabIndex = 12;
             // 
             // dataGridViewTextBoxColumn4
@@ -202,7 +207,6 @@
             // 
             // insertDateDataGridViewTextBoxColumn
             // 
-            insertDateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             insertDateDataGridViewTextBoxColumn.DataPropertyName = "InsertDate";
             insertDateDataGridViewTextBoxColumn.HeaderText = "InsertDate";
             insertDateDataGridViewTextBoxColumn.Name = "insertDateDataGridViewTextBoxColumn";
@@ -214,11 +218,47 @@
             performanceTimeDataGridViewTextBoxColumn.HeaderText = "PerformanceTime";
             performanceTimeDataGridViewTextBoxColumn.Name = "performanceTimeDataGridViewTextBoxColumn";
             // 
+            // wordMovementBindingSource
+            // 
+            wordMovementBindingSource.DataSource = typeof(LeitnerSystemsDataModels.WordMovement);
+            // 
+            // buttonSet
+            // 
+            buttonSet.Location = new Point(645, 122);
+            buttonSet.Name = "buttonSet";
+            buttonSet.Size = new Size(89, 23);
+            buttonSet.TabIndex = 13;
+            buttonSet.Text = "SET";
+            buttonSet.UseVisualStyleBackColor = true;
+            buttonSet.Click += buttonSet_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(455, 105);
+            label2.Name = "label2";
+            label2.Size = new Size(121, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Set PerformanceTime";
+            // 
+            // comboBoxSet
+            // 
+            comboBoxSet.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSet.FormattingEnabled = true;
+            comboBoxSet.Items.AddRange(new object[] { "=Now", "=InsertDate", "=First" });
+            comboBoxSet.Location = new Point(455, 123);
+            comboBoxSet.Name = "comboBoxSet";
+            comboBoxSet.Size = new Size(181, 23);
+            comboBoxSet.TabIndex = 15;
+            // 
             // FrmTables
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(878, 765);
+            ClientSize = new Size(779, 765);
+            Controls.Add(comboBoxSet);
+            Controls.Add(label2);
+            Controls.Add(buttonSet);
             Controls.Add(dataGridViewTables);
             Controls.Add(buttonLoad);
             Controls.Add(label1);
@@ -243,6 +283,7 @@
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)boxOneBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTables).EndInit();
+            ((System.ComponentModel.ISupportInitialize)wordMovementBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -271,10 +312,14 @@
         private Button buttonLoad;
         private BindingSource boxOneBindingSource;
         private DataGridView dataGridViewTables;
+        private BindingSource wordMovementBindingSource;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn insertDateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn performanceTimeDataGridViewTextBoxColumn;
+        private Button buttonSet;
+        private Label label2;
+        private ComboBox comboBoxSet;
     }
 }

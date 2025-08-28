@@ -15,8 +15,8 @@ namespace Leitner_Systems
 
         private void buttonInsert_Click(object sender, EventArgs e)
         {
-            string enW = textBoxEnWord.Text.ToUpper();
-            string bgW = textBoxBgWord.Text.ToUpper();
+            string enW = textBoxEnWord.Text.ToUpper().Replace(" ", "");
+            string bgW = textBoxBgWord.Text.ToUpper().Replace(" ", "");
 
             if (enW.Length > 0 && bgW.Length > 0)
             {
@@ -48,10 +48,17 @@ namespace Leitner_Systems
                 context.SaveChanges();
 
                 MessageBox.Show("Inserted!");
+
+                Clear();
             }
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void Clear()
         {
             textBoxBgWord.Text = string.Empty;
             textBoxEnWord.Text = string.Empty;
