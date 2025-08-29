@@ -94,6 +94,19 @@ namespace Leitner_Systems
                     PerformanceTime = DateTime.Now.AddMilliseconds(intervalMilisec)
                 };
                 context.Add(boxOne);
+
+                WordMovement wordMovement = new WordMovement()
+                {
+                    EnWord = arrWords[0],
+                    BgWord = arrWords[1],
+                    DisplayLanguage = "",
+                    FromBox = "New word",
+                    ToBox = "BoxOne",
+                    Hint = false,
+                    InsertDate = DateTime.Now
+                };
+                context.Add(wordMovement);
+
                 context.SaveChanges();
 
                 MessageBox.Show("Done!");

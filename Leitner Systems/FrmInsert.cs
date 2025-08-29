@@ -17,6 +17,8 @@ namespace Leitner_Systems
         {
             string enW = textBoxEnWord.Text.ToUpper().Replace(" ", "");
             string bgW = textBoxBgWord.Text.ToUpper().Replace(" ", "");
+            double intervalMilisec = 0;
+            intervalMilisec = SetTimers(intervalMilisec);
 
             if (enW.Length > 0 && bgW.Length > 0)
             {
@@ -30,9 +32,22 @@ namespace Leitner_Systems
                     {
                         EnWord = enW,
                         BgWord = bgW,
-                        InsertDate = DateTime.Now
+                        InsertDate = DateTime.Now,
+                        PerformanceTime = DateTime.Now.AddMilliseconds(intervalMilisec)
                     };
                     context.BoxOnes!.Add(boxOne);
+
+                    WordMovement wordMovement = new WordMovement()
+                    {
+                        EnWord = enW,
+                        BgWord = bgW,
+                        DisplayLanguage = "",
+                        FromBox = "New word",
+                        ToBox = "BoxOne",
+                        Hint = false,
+                        InsertDate = DateTime.Now
+                    };
+                    context.Add(wordMovement);
                 }
                 if (enBgWords == null)
                 {
@@ -51,6 +66,28 @@ namespace Leitner_Systems
 
                 Clear();
             }
+        }
+        public double SetTimers(double interval)
+        {
+            var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive, t.MHD }).FirstOrDefault();
+
+            if (timers != null)
+            {
+                if (timers.MHD == "Mins")
+                {
+                    interval = 60000; // 1 minute
+                }
+                else if (timers.MHD == "Hours")
+                {
+                    interval = 3600000; // 1 hour
+                }
+                else if (timers.MHD == "Days")
+                {
+                    interval = 86400000; // 1 day
+                }
+            }
+
+            return interval;
         }
 
         private void buttonClear_Click(object sender, EventArgs e)

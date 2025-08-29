@@ -115,7 +115,9 @@
             // checkBoxInBoxOne
             // 
             checkBoxInBoxOne.AutoSize = true;
-            checkBoxInBoxOne.Location = new Point(192, 28);
+            checkBoxInBoxOne.Checked = true;
+            checkBoxInBoxOne.CheckState = CheckState.Checked;
+            checkBoxInBoxOne.Location = new Point(320, 123);
             checkBoxInBoxOne.Name = "checkBoxInBoxOne";
             checkBoxInBoxOne.Size = new Size(77, 19);
             checkBoxInBoxOne.TabIndex = 7;

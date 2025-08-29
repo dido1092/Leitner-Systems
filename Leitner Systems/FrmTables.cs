@@ -17,26 +17,6 @@ namespace Leitner_Systems
             InitializeComponent();
         }
 
-        //private void buttonRefresh_Click(object sender, EventArgs e)
-        //{
-        //    SqlConnection cnn = new SqlConnection(DbConfig.ConnectionString);
-        //    SqlCommand cmd = new SqlCommand();
-        //    cmd.Connection = cnn;
-
-        //    try
-        //    {
-        //        string tableName = comboBoxTables.Text;
-
-        //        TableResult(tableName, DbConfig.ConnectionString);
-
-        //        CountRows();
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
         private void TableResult(string tableName, string connectionString)
         {
             SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM {tableName}", connectionString);
@@ -229,6 +209,8 @@ namespace Leitner_Systems
                 TableResult(tableName, DbConfig.ConnectionString);
 
                 CountRows();
+
+                comboBoxSet.Text = DateTime.Now.ToString();
             }
         }
 
@@ -262,8 +244,64 @@ namespace Leitner_Systems
 
                 MessageBox.Show("Set completed!");
             }
+            else if (textBoxIdFirst.Text != string.Empty && textBoxIdLast.Text != string.Empty)
+            {
+                string dateForSet = comboBoxSet.Text;
 
+                int idFirst = int.Parse(textBoxIdFirst.Text);
+                int idLast = int.Parse(textBoxIdLast.Text);
+
+                if (idFirst < idLast)
+                {
+                    SetRange(tableName, idFirst, idLast, DateTime.Parse(dateForSet));
+                }
+                else
+                {
+                    idFirst = int.Parse(textBoxIdLast.Text);
+                    idLast = int.Parse(textBoxIdFirst.Text);
+
+                    SetRange(tableName, idFirst, idLast, DateTime.Parse(dateForSet));
+                }
+
+            }
             LoadTable();
+        }
+        private void SetRange(string tableName, int idFirst, int idLast, DateTime performanceTime)
+        {
+            SqlConnection cnn = new SqlConnection(DbConfig.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnn;
+
+            int rowindex = dataGridViewTables.CurrentRow.Index;
+            int colindex = dataGridViewTables.CurrentCell.ColumnIndex;
+
+            //string columnName = dataGridViewTables.Columns[colindex].HeaderText;
+
+            string? getValue = dataGridViewTables.CurrentCell.Value.ToString();
+            string? id = dataGridViewTables.Rows[rowindex].Cells[0].Value.ToString();
+
+            try
+            {
+                using (cnn = new SqlConnection(DbConfig.ConnectionString))
+                {
+                    cnn.Open();
+                    string sqlCommand = $"Update {tableName} set PerformanceTime=@PerformanceTime Where Id>={idFirst} AND Id<={idLast}";
+                    cmd = new SqlCommand(sqlCommand, cnn);
+
+                    cmd.Parameters.AddWithValue($"@PerformanceTime", performanceTime);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected == 1)
+                    {
+                        MessageBox.Show("Information Updated", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    cnn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private DateTime GetPerformanceTime(string tableName)
         {
@@ -340,6 +378,61 @@ namespace Leitner_Systems
             {
                 //MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonSelectIds_Click(object sender, EventArgs e)
+        {
+            var selectedRows = dataGridViewTables.SelectedCells;
+
+            if (selectedRows.Count > 0)
+            {
+                int firstId = Convert.ToInt32(selectedRows[0].Value);
+                int lastId = Convert.ToInt32(selectedRows[selectedRows.Count - 1].Value);
+
+                if (firstId < lastId)
+                {
+                    textBoxIdFirst.Text = firstId.ToString();
+                    textBoxIdLast.Text = lastId.ToString();
+                }
+                else
+                {
+                    textBoxIdFirst.Text = lastId.ToString();
+                    textBoxIdLast.Text = firstId.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No id's selected.");
+            }
+        }
+
+        //private void buttonChange_Click(object sender, EventArgs e)
+        //{
+        //    string idFirst = textBoxIdFirst.Text;
+        //    string idLast = textBoxIdLast.Text;
+
+        //    textBoxIdFirst.Text = idLast;
+        //    textBoxIdLast.Text = idFirst;
+        //}
+
+        private void buttonClearIds_Click(object sender, EventArgs e)
+        {
+            textBoxIdFirst.Clear();
+            textBoxIdLast.Clear();
+        }
+        private void CheckFillBoxes()
+        { 
+            var getCountBoxOne = context.BoxOnes!.Count();
+            var getCountBoxTwo = context.BoxTwos!.Count();
+            var getCountBoxThree = context.BoxThrees!.Count();
+            var getCountBoxFour = context.BoxFours!.Count();
+            var getCountBoxFive = context.BoxFives!.Count();
+
+            labelInfo.Text = $"BoxOne: {getCountBoxOne} | BoxTwo: {getCountBoxTwo} | BoxThree: {getCountBoxThree} | BoxFour: {getCountBoxFour} | BoxFive: {getCountBoxFive}";
+        }
+        private void FrmTables_Load(object sender, EventArgs e)
+        {
+            CheckFillBoxes();
         }
     }
 }

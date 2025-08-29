@@ -56,6 +56,13 @@
             buttonSet = new Button();
             label2 = new Label();
             comboBoxSet = new ComboBox();
+            textBoxIdFirst = new TextBox();
+            textBoxIdLast = new TextBox();
+            label3 = new Label();
+            label4 = new Label();
+            buttonSelectIds = new Button();
+            buttonClearIds = new Button();
+            labelInfo = new Label();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource3).BeginInit();
@@ -93,7 +100,7 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(645, 698);
+            buttonDelete.Location = new Point(645, 663);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(89, 29);
             buttonDelete.TabIndex = 4;
@@ -184,7 +191,7 @@
             dataGridViewTables.DataSource = boxOneBindingSource;
             dataGridViewTables.Location = new Point(13, 161);
             dataGridViewTables.Name = "dataGridViewTables";
-            dataGridViewTables.Size = new Size(623, 566);
+            dataGridViewTables.Size = new Size(623, 531);
             dataGridViewTables.TabIndex = 12;
             // 
             // dataGridViewTextBoxColumn4
@@ -235,7 +242,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(455, 105);
+            label2.Location = new Point(503, 105);
             label2.Name = "label2";
             label2.Size = new Size(121, 15);
             label2.TabIndex = 14;
@@ -243,19 +250,86 @@
             // 
             // comboBoxSet
             // 
-            comboBoxSet.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSet.FormattingEnabled = true;
             comboBoxSet.Items.AddRange(new object[] { "=Now", "=InsertDate", "=First" });
-            comboBoxSet.Location = new Point(455, 123);
+            comboBoxSet.Location = new Point(503, 123);
             comboBoxSet.Name = "comboBoxSet";
-            comboBoxSet.Size = new Size(181, 23);
+            comboBoxSet.Size = new Size(133, 23);
             comboBoxSet.TabIndex = 15;
+            // 
+            // textBoxIdFirst
+            // 
+            textBoxIdFirst.Location = new Point(349, 123);
+            textBoxIdFirst.Name = "textBoxIdFirst";
+            textBoxIdFirst.Size = new Size(66, 23);
+            textBoxIdFirst.TabIndex = 16;
+            // 
+            // textBoxIdLast
+            // 
+            textBoxIdLast.Location = new Point(431, 123);
+            textBoxIdLast.Name = "textBoxIdLast";
+            textBoxIdLast.Size = new Size(66, 23);
+            textBoxIdLast.TabIndex = 17;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(349, 105);
+            label3.Name = "label3";
+            label3.Size = new Size(36, 15);
+            label3.TabIndex = 18;
+            label3.Text = "Id >=";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(431, 105);
+            label4.Name = "label4";
+            label4.Size = new Size(36, 15);
+            label4.TabIndex = 19;
+            label4.Text = "Id <=";
+            // 
+            // buttonSelectIds
+            // 
+            buttonSelectIds.Location = new Point(645, 281);
+            buttonSelectIds.Name = "buttonSelectIds";
+            buttonSelectIds.Size = new Size(89, 31);
+            buttonSelectIds.TabIndex = 20;
+            buttonSelectIds.Text = "Select Id's";
+            buttonSelectIds.UseVisualStyleBackColor = true;
+            buttonSelectIds.Click += buttonSelectIds_Click;
+            // 
+            // buttonClearIds
+            // 
+            buttonClearIds.Location = new Point(645, 347);
+            buttonClearIds.Name = "buttonClearIds";
+            buttonClearIds.Size = new Size(89, 31);
+            buttonClearIds.TabIndex = 22;
+            buttonClearIds.Text = "Clear Id's";
+            buttonClearIds.UseVisualStyleBackColor = true;
+            buttonClearIds.Click += buttonClearIds_Click;
+            // 
+            // labelInfo
+            // 
+            labelInfo.AutoSize = true;
+            labelInfo.Location = new Point(13, 705);
+            labelInfo.Name = "labelInfo";
+            labelInfo.Size = new Size(28, 15);
+            labelInfo.TabIndex = 23;
+            labelInfo.Text = "Info";
             // 
             // FrmTables
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(779, 765);
+            Controls.Add(labelInfo);
+            Controls.Add(buttonClearIds);
+            Controls.Add(buttonSelectIds);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(textBoxIdLast);
+            Controls.Add(textBoxIdFirst);
             Controls.Add(comboBoxSet);
             Controls.Add(label2);
             Controls.Add(buttonSet);
@@ -277,6 +351,7 @@
             Name = "FrmTables";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Tables";
+            Load += FrmTables_Load;
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource3).EndInit();
@@ -321,5 +396,12 @@
         private Button buttonSet;
         private Label label2;
         private ComboBox comboBoxSet;
+        private TextBox textBoxIdFirst;
+        private TextBox textBoxIdLast;
+        private Label label3;
+        private Label label4;
+        private Button buttonSelectIds;
+        private Button buttonClearIds;
+        private Label labelInfo;
     }
 }
