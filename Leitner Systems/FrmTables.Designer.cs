@@ -37,7 +37,6 @@
             buttonSearch = new Button();
             buttonDelete = new Button();
             buttonUpDate = new Button();
-            buttonInsert = new Button();
             enBgWordBindingSource3 = new BindingSource(components);
             enBgWordBindingSource2 = new BindingSource(components);
             checkBoxEnWord = new CheckBox();
@@ -85,14 +84,14 @@
             // 
             textBoxSearch.Location = new Point(12, 122);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(164, 23);
+            textBoxSearch.Size = new Size(145, 23);
             textBoxSearch.TabIndex = 2;
             // 
             // buttonSearch
             // 
-            buttonSearch.Location = new Point(182, 122);
+            buttonSearch.Location = new Point(163, 123);
             buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(115, 23);
+            buttonSearch.Size = new Size(90, 23);
             buttonSearch.TabIndex = 3;
             buttonSearch.Text = "SEARCH";
             buttonSearch.UseVisualStyleBackColor = true;
@@ -117,16 +116,6 @@
             buttonUpDate.Text = "UPDATE";
             buttonUpDate.UseVisualStyleBackColor = true;
             buttonUpDate.Click += buttonUpDate_Click;
-            // 
-            // buttonInsert
-            // 
-            buttonInsert.Location = new Point(645, 36);
-            buttonInsert.Name = "buttonInsert";
-            buttonInsert.Size = new Size(89, 23);
-            buttonInsert.TabIndex = 5;
-            buttonInsert.Text = "INSERT";
-            buttonInsert.UseVisualStyleBackColor = true;
-            buttonInsert.Click += buttonInsert_Click;
             // 
             // checkBoxEnWord
             // 
@@ -231,7 +220,7 @@
             // 
             // buttonSet
             // 
-            buttonSet.Location = new Point(645, 122);
+            buttonSet.Location = new Point(645, 121);
             buttonSet.Name = "buttonSet";
             buttonSet.Size = new Size(89, 23);
             buttonSet.TabIndex = 13;
@@ -242,31 +231,30 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(503, 105);
+            label2.Location = new Point(456, 106);
             label2.Name = "label2";
-            label2.Size = new Size(121, 15);
+            label2.Size = new Size(102, 15);
             label2.TabIndex = 14;
-            label2.Text = "Set PerformanceTime";
+            label2.Text = "PerformanceTime";
             // 
             // comboBoxSet
             // 
             comboBoxSet.FormattingEnabled = true;
-            comboBoxSet.Items.AddRange(new object[] { "=Now", "=InsertDate", "=First" });
-            comboBoxSet.Location = new Point(503, 123);
+            comboBoxSet.Location = new Point(456, 123);
             comboBoxSet.Name = "comboBoxSet";
-            comboBoxSet.Size = new Size(133, 23);
+            comboBoxSet.Size = new Size(180, 23);
             comboBoxSet.TabIndex = 15;
             // 
             // textBoxIdFirst
             // 
-            textBoxIdFirst.Location = new Point(349, 123);
+            textBoxIdFirst.Location = new Point(272, 124);
             textBoxIdFirst.Name = "textBoxIdFirst";
             textBoxIdFirst.Size = new Size(66, 23);
             textBoxIdFirst.TabIndex = 16;
             // 
             // textBoxIdLast
             // 
-            textBoxIdLast.Location = new Point(431, 123);
+            textBoxIdLast.Location = new Point(372, 124);
             textBoxIdLast.Name = "textBoxIdLast";
             textBoxIdLast.Size = new Size(66, 23);
             textBoxIdLast.TabIndex = 17;
@@ -274,7 +262,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(349, 105);
+            label3.Location = new Point(272, 105);
             label3.Name = "label3";
             label3.Size = new Size(36, 15);
             label3.TabIndex = 18;
@@ -283,7 +271,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(431, 105);
+            label4.Location = new Point(372, 106);
             label4.Name = "label4";
             label4.Size = new Size(36, 15);
             label4.TabIndex = 19;
@@ -291,7 +279,7 @@
             // 
             // buttonSelectIds
             // 
-            buttonSelectIds.Location = new Point(645, 281);
+            buttonSelectIds.Location = new Point(645, 263);
             buttonSelectIds.Name = "buttonSelectIds";
             buttonSelectIds.Size = new Size(89, 31);
             buttonSelectIds.TabIndex = 20;
@@ -301,7 +289,7 @@
             // 
             // buttonClearIds
             // 
-            buttonClearIds.Location = new Point(645, 347);
+            buttonClearIds.Location = new Point(645, 323);
             buttonClearIds.Name = "buttonClearIds";
             buttonClearIds.Size = new Size(89, 31);
             buttonClearIds.TabIndex = 22;
@@ -322,7 +310,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(779, 765);
+            ClientSize = new Size(772, 765);
             Controls.Add(labelInfo);
             Controls.Add(buttonClearIds);
             Controls.Add(buttonSelectIds);
@@ -339,7 +327,6 @@
             Controls.Add(comboBoxTables);
             Controls.Add(checkBoxBgWord);
             Controls.Add(checkBoxEnWord);
-            Controls.Add(buttonInsert);
             Controls.Add(buttonUpDate);
             Controls.Add(buttonDelete);
             Controls.Add(buttonSearch);
@@ -369,7 +356,6 @@
         private Button buttonSearch;
         private Button buttonDelete;
         private Button buttonUpDate;
-        private Button buttonInsert;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn enWordDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn bgWordDataGridViewTextBoxColumn;

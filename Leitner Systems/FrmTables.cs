@@ -129,11 +129,11 @@ namespace Leitner_Systems
             }
         }
 
-        private void buttonInsert_Click(object sender, EventArgs e)
-        {
-            FrmInsert insert = new FrmInsert();
-            insert.Show();
-        }
+        //private void buttonInsert_Click(object sender, EventArgs e)
+        //{
+        //    FrmInsert insert = new FrmInsert();
+        //    insert.Show();
+        //}
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
@@ -216,35 +216,36 @@ namespace Leitner_Systems
 
         private void buttonSet_Click(object sender, EventArgs e)
         {
-            string setTo = comboBoxSet.Text;
             string tableName = comboBoxTables.Text;
+            //string setTo = comboBoxSet.Text;
 
-            if (setTo == "=Now")
-            {
-                Set(tableName, DateTime.Now);
+            //if (setTo == "=Now")
+            //{
+            //    Set(tableName, DateTime.Now);
 
-                MessageBox.Show("Set completed!");
-            }
-            else if (setTo == "=InsertDate")
-            {
-                List<DateTime> insertDate = GetInsertDate(tableName);
+            //    MessageBox.Show("Set completed!");
+            //}
+            //else if (setTo == "=InsertDate")
+            //{
+            //    List<DateTime> insertDate = GetInsertDate(tableName);
 
-                foreach (var insD in insertDate)
-                {
-                    Set(tableName, insD);
-                }
+            //    foreach (var insD in insertDate)
+            //    {
+            //        Set(tableName, insD);
+            //    }
 
-                MessageBox.Show("Set completed!");
-            }
-            else if (setTo == "=First")//=First PerformanceTime
-            {
-                DateTime getPerformanceTime = GetPerformanceTime(tableName);
+            //    MessageBox.Show("Set completed!");
+            //}
+            //else if (setTo == "=First")//=First PerformanceTime
+            //{
+            //    DateTime getPerformanceTime = GetPerformanceTime(tableName);
 
-                Set(tableName, getPerformanceTime);
+            //    Set(tableName, getPerformanceTime);
 
-                MessageBox.Show("Set completed!");
-            }
-            else if (textBoxIdFirst.Text != string.Empty && textBoxIdLast.Text != string.Empty)
+            //    MessageBox.Show("Set completed!");
+            //}
+            //else
+            if (textBoxIdFirst.Text != string.Empty && textBoxIdLast.Text != string.Empty)
             {
                 string dateForSet = comboBoxSet.Text;
 

@@ -37,6 +37,8 @@
             toolStripSeparator2 = new ToolStripSeparator();
             toolStripButtonTables = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
+            toolStripButtonWordMovement = new ToolStripButton();
+            toolStripSeparator5 = new ToolStripSeparator();
             toolStripButtonChart = new ToolStripButton();
             toolStripSeparator4 = new ToolStripSeparator();
             toolStripButtonTimers = new ToolStripButton();
@@ -50,8 +52,11 @@
             timerThree = new System.Windows.Forms.Timer(components);
             timerFour = new System.Windows.Forms.Timer(components);
             timerFive = new System.Windows.Forms.Timer(components);
-            toolStripSeparator5 = new ToolStripSeparator();
-            toolStripButtonWordMovement = new ToolStripButton();
+            labelBoxOne = new Label();
+            labelBoxTwo = new Label();
+            labelBoxThree = new Label();
+            labelBoxFour = new Label();
+            labelBoxFive = new Label();
             toolStrip1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
@@ -61,7 +66,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButtonInsert, toolStripSeparator1, toolStripButtonMoveToBoxOne, toolStripSeparator2, toolStripButtonTables, toolStripSeparator3, toolStripButtonWordMovement, toolStripSeparator5, toolStripButtonChart, toolStripSeparator4, toolStripButtonTimers });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(676, 25);
+            toolStrip1.Size = new Size(576, 25);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -110,6 +115,21 @@
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new Size(6, 25);
             // 
+            // toolStripButtonWordMovement
+            // 
+            toolStripButtonWordMovement.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonWordMovement.Image = (Image)resources.GetObject("toolStripButtonWordMovement.Image");
+            toolStripButtonWordMovement.ImageTransparentColor = Color.Magenta;
+            toolStripButtonWordMovement.Name = "toolStripButtonWordMovement";
+            toolStripButtonWordMovement.Size = new Size(23, 22);
+            toolStripButtonWordMovement.Text = "Word Movement";
+            toolStripButtonWordMovement.Click += toolStripButtonWordMovement_Click;
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 25);
+            // 
             // toolStripButtonChart
             // 
             toolStripButtonChart.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -138,7 +158,7 @@
             // buttonTest
             // 
             buttonTest.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            buttonTest.Location = new Point(120, 115);
+            buttonTest.Location = new Point(84, 85);
             buttonTest.Name = "buttonTest";
             buttonTest.Size = new Size(390, 115);
             buttonTest.TabIndex = 1;
@@ -205,26 +225,61 @@
             timerFive.Interval = 60000;
             timerFive.Tick += timerFive_Tick;
             // 
-            // toolStripSeparator5
+            // labelBoxOne
             // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 25);
+            labelBoxOne.AutoSize = true;
+            labelBoxOne.Location = new Point(30, 267);
+            labelBoxOne.Name = "labelBoxOne";
+            labelBoxOne.Size = new Size(51, 15);
+            labelBoxOne.TabIndex = 2;
+            labelBoxOne.Text = "Box One";
             // 
-            // toolStripButtonWordMovement
+            // labelBoxTwo
             // 
-            toolStripButtonWordMovement.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButtonWordMovement.Image = (Image)resources.GetObject("toolStripButtonWordMovement.Image");
-            toolStripButtonWordMovement.ImageTransparentColor = Color.Magenta;
-            toolStripButtonWordMovement.Name = "toolStripButtonWordMovement";
-            toolStripButtonWordMovement.Size = new Size(23, 22);
-            toolStripButtonWordMovement.Text = "Word Movement";
-            toolStripButtonWordMovement.Click += toolStripButtonWordMovement_Click;
+            labelBoxTwo.AutoSize = true;
+            labelBoxTwo.Location = new Point(30, 292);
+            labelBoxTwo.Name = "labelBoxTwo";
+            labelBoxTwo.Size = new Size(51, 15);
+            labelBoxTwo.TabIndex = 3;
+            labelBoxTwo.Text = "Box Two";
+            // 
+            // labelBoxThree
+            // 
+            labelBoxThree.AutoSize = true;
+            labelBoxThree.Location = new Point(30, 316);
+            labelBoxThree.Name = "labelBoxThree";
+            labelBoxThree.Size = new Size(59, 15);
+            labelBoxThree.TabIndex = 4;
+            labelBoxThree.Text = "Box Three";
+            // 
+            // labelBoxFour
+            // 
+            labelBoxFour.AutoSize = true;
+            labelBoxFour.Location = new Point(30, 341);
+            labelBoxFour.Name = "labelBoxFour";
+            labelBoxFour.Size = new Size(53, 15);
+            labelBoxFour.TabIndex = 5;
+            labelBoxFour.Text = "Box Four";
+            // 
+            // labelBoxFive
+            // 
+            labelBoxFive.AutoSize = true;
+            labelBoxFive.Location = new Point(30, 366);
+            labelBoxFive.Name = "labelBoxFive";
+            labelBoxFive.Size = new Size(50, 15);
+            labelBoxFive.TabIndex = 6;
+            labelBoxFive.Text = "Box Five";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(676, 386);
+            ClientSize = new Size(576, 414);
+            Controls.Add(labelBoxFive);
+            Controls.Add(labelBoxFour);
+            Controls.Add(labelBoxThree);
+            Controls.Add(labelBoxTwo);
+            Controls.Add(labelBoxOne);
             Controls.Add(buttonTest);
             Controls.Add(toolStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -266,5 +321,10 @@
         private ToolStripButton toolStripButtonChart;
         private ToolStripButton toolStripButtonWordMovement;
         private ToolStripSeparator toolStripSeparator5;
+        private Label labelBoxOne;
+        private Label labelBoxTwo;
+        private Label labelBoxThree;
+        private Label labelBoxFour;
+        private Label labelBoxFive;
     }
 }

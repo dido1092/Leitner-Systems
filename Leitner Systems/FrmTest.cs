@@ -686,7 +686,7 @@ namespace Leitner_Systems
 
             string? mhd = timers!.MHD;
 
-            labelTimers.Text = $"BoxOne: '{timers!.BoxOne}' / BoxTwo: '{timers!.BoxTwo}' / BoxThree: '{timers!.BoxThree}' / BoxFour: '{timers!.BoxFour}' / BoxFive: '{timers!.BoxFive}' In: {mhd}";
+            //labelTimers.Text = $"BoxOne: '{timers!.BoxOne}' / BoxTwo: '{timers!.BoxTwo}' / BoxThree: '{timers!.BoxThree}' / BoxFour: '{timers!.BoxFour}' / BoxFive: '{timers!.BoxFive}' In: {mhd}";
         }
 
         public void LoadBox(string boxTable)

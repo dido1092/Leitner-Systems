@@ -51,10 +51,67 @@ namespace Leitner_Systems
             }
             else if (FormWindowState.Normal == this.WindowState)
             {
-
                 MaxmizedFromTray();
+
+                InBoxesInfo();
             }
         }
+        private void InBoxesInfo()
+        {
+            var boxOneCount = context.BoxOnes!.Count();
+            var boxTwoCount = context.BoxTwos!.Count();
+            var boxThreeCount = context.BoxThrees!.Count();
+            var boxFourCount = context.BoxFours!.Count();
+            var boxFiveCount = context.BoxFives!.Count();
+
+            var boxOnePT = context.BoxOnes!.Select(b => b.PerformanceTime).FirstOrDefault();
+            var boxTwoPT = context.BoxTwos!.Select(b => b.PerformanceTime).FirstOrDefault();
+            var boxThreePT = context.BoxThrees!.Select(b => b.PerformanceTime).FirstOrDefault();
+            var boxFourPT = context.BoxFours!.Select(b => b.PerformanceTime).FirstOrDefault();
+            var boxFivePT = context.BoxFives!.Select(b => b.PerformanceTime).FirstOrDefault();
+
+            if (boxOneCount > 0)
+            {
+                labelBoxOne.Text = $"Box One Words: {boxOneCount} - DateTime: {boxOnePT}";
+            }
+            else
+            {
+                labelBoxOne.Text = "Box One:";
+            }
+            if (boxTwoCount > 0)
+            {
+                labelBoxTwo.Text = $"Box Two Words: {boxTwoCount} - DateTime: {boxTwoPT}";
+            }
+            else
+            {
+                labelBoxTwo.Text = "Box Two:";
+            }
+            if (boxThreeCount > 0)
+            {
+                labelBoxThree.Text = $"Box Three Words: {boxThreeCount} - DateTime: {boxThreePT}";
+            }
+            else
+            {
+                labelBoxThree.Text = "Box Three:";
+            }
+            if (boxFourCount > 0)
+            {
+                labelBoxFour.Text = $"Box Four Words: {boxFourCount} - DateTime: {boxFourPT}";
+            }
+            else
+            {
+                labelBoxFour.Text = "Box Four:";
+            }
+            if (boxFiveCount > 0)
+            {
+                labelBoxFive.Text = $"Box Five  Words: {boxFiveCount} - DateTime: {boxFivePT}";
+            }
+            else
+            {
+                labelBoxFive.Text = "Box Five:";
+            }
+        }
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -144,6 +201,7 @@ namespace Leitner_Systems
                     }
                 }
             }
+            InBoxesInfo();
         }
         private void timerTwo_Tick(object sender, EventArgs e)
         {
