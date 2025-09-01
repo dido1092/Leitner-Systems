@@ -46,11 +46,6 @@
             buttonLoad = new Button();
             boxOneBindingSource = new BindingSource(components);
             dataGridViewTables = new DataGridView();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            insertDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            performanceTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             wordMovementBindingSource = new BindingSource(components);
             buttonSet = new Button();
             label2 = new Label();
@@ -62,6 +57,11 @@
             buttonSelectIds = new Button();
             buttonClearIds = new Button();
             labelInfo = new Label();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            insertDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            performanceTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)enBgWordBindingSource3).BeginInit();
@@ -183,37 +183,6 @@
             dataGridViewTables.Size = new Size(623, 531);
             dataGridViewTables.TabIndex = 12;
             // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "Id";
-            dataGridViewTextBoxColumn4.HeaderText = "Id";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "EnWord";
-            dataGridViewTextBoxColumn5.HeaderText = "EnWord";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "BgWord";
-            dataGridViewTextBoxColumn6.HeaderText = "BgWord";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // insertDateDataGridViewTextBoxColumn
-            // 
-            insertDateDataGridViewTextBoxColumn.DataPropertyName = "InsertDate";
-            insertDateDataGridViewTextBoxColumn.HeaderText = "InsertDate";
-            insertDateDataGridViewTextBoxColumn.Name = "insertDateDataGridViewTextBoxColumn";
-            // 
-            // performanceTimeDataGridViewTextBoxColumn
-            // 
-            performanceTimeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            performanceTimeDataGridViewTextBoxColumn.DataPropertyName = "PerformanceTime";
-            performanceTimeDataGridViewTextBoxColumn.HeaderText = "PerformanceTime";
-            performanceTimeDataGridViewTextBoxColumn.Name = "performanceTimeDataGridViewTextBoxColumn";
-            // 
             // wordMovementBindingSource
             // 
             wordMovementBindingSource.DataSource = typeof(LeitnerSystemsDataModels.WordMovement);
@@ -306,6 +275,40 @@
             labelInfo.TabIndex = 23;
             labelInfo.Text = "Info";
             // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "Id";
+            dataGridViewTextBoxColumn4.HeaderText = "Id";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Width = 42;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn5.DataPropertyName = "EnWord";
+            dataGridViewTextBoxColumn5.HeaderText = "EnWord";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn6.DataPropertyName = "BgWord";
+            dataGridViewTextBoxColumn6.HeaderText = "BgWord";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // insertDateDataGridViewTextBoxColumn
+            // 
+            insertDateDataGridViewTextBoxColumn.DataPropertyName = "InsertDate";
+            insertDateDataGridViewTextBoxColumn.HeaderText = "InsertDate";
+            insertDateDataGridViewTextBoxColumn.Name = "insertDateDataGridViewTextBoxColumn";
+            // 
+            // performanceTimeDataGridViewTextBoxColumn
+            // 
+            performanceTimeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            performanceTimeDataGridViewTextBoxColumn.DataPropertyName = "PerformanceTime";
+            performanceTimeDataGridViewTextBoxColumn.HeaderText = "PerformanceTime";
+            performanceTimeDataGridViewTextBoxColumn.Name = "performanceTimeDataGridViewTextBoxColumn";
+            // 
             // FrmTables
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -374,11 +377,6 @@
         private BindingSource boxOneBindingSource;
         private DataGridView dataGridViewTables;
         private BindingSource wordMovementBindingSource;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn insertDateDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn performanceTimeDataGridViewTextBoxColumn;
         private Button buttonSet;
         private Label label2;
         private ComboBox comboBoxSet;
@@ -389,5 +387,10 @@
         private Button buttonSelectIds;
         private Button buttonClearIds;
         private Label labelInfo;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn insertDateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn performanceTimeDataGridViewTextBoxColumn;
     }
 }

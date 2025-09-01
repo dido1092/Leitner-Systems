@@ -23,6 +23,9 @@ namespace Leitner_Systems
             DataSet ds = new DataSet();
             da.Fill(ds, $"{tableName}");
             dataGridViewTables.DataSource = ds.Tables[$"{tableName}"]?.DefaultView;
+
+            dataGridViewTables.Columns[3].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm:ss";
+            dataGridViewTables.Columns[4].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm:ss";
         }
         private void CountRows()
         {

@@ -58,53 +58,53 @@ namespace Leitner_Systems
         }
         private void InBoxesInfo()
         {
-            var boxOneCount = context.BoxOnes!.Count();
-            var boxTwoCount = context.BoxTwos!.Count();
-            var boxThreeCount = context.BoxThrees!.Count();
-            var boxFourCount = context.BoxFours!.Count();
-            var boxFiveCount = context.BoxFives!.Count();
+            var boxOne = context.BoxOnes!.Select(b => b.PerformanceTime).FirstOrDefault();
+            var boxTwo = context.BoxTwos!.Select(b => b.PerformanceTime).FirstOrDefault();
+            var boxThree = context.BoxThrees!.Select(b => b.PerformanceTime).FirstOrDefault();
+            var boxFour = context.BoxFours!.Select(b => b.PerformanceTime).FirstOrDefault();
+            var boxFive = context.BoxFives!.Select(b => b.PerformanceTime).FirstOrDefault();
 
-            var boxOnePT = context.BoxOnes!.Select(b => b.PerformanceTime).FirstOrDefault();
-            var boxTwoPT = context.BoxTwos!.Select(b => b.PerformanceTime).FirstOrDefault();
-            var boxThreePT = context.BoxThrees!.Select(b => b.PerformanceTime).FirstOrDefault();
-            var boxFourPT = context.BoxFours!.Select(b => b.PerformanceTime).FirstOrDefault();
-            var boxFivePT = context.BoxFives!.Select(b => b.PerformanceTime).FirstOrDefault();
+            var boxOnePT = context.BoxOnes!.Select(b => b.PerformanceTime).Where(b => b == boxOne).ToList();
+            var boxTwoPT = context.BoxTwos!.Select(b => b.PerformanceTime).Where(b => b == boxTwo).ToList();
+            var boxThreePT = context.BoxThrees!.Select(b => b.PerformanceTime).Where(b => b == boxThree).ToList();
+            var boxFourPT = context.BoxFours!.Select(b => b.PerformanceTime).Where(b => b == boxFour).ToList();
+            var boxFivePT = context.BoxFives!.Select(b => b.PerformanceTime).Where(b => b == boxFive).ToList();
 
-            if (boxOneCount > 0)
+            if (boxOnePT.Count() > 0)
             {
-                labelBoxOne.Text = $"Box One Words: {boxOneCount} - DateTime: {boxOnePT}";
+                labelBoxOne.Text = $"Box One Words: {boxOnePT.Count()} - DateTime: {boxOne}";
             }
             else
             {
                 labelBoxOne.Text = "Box One:";
             }
-            if (boxTwoCount > 0)
+            if (boxTwoPT.Count() > 0)
             {
-                labelBoxTwo.Text = $"Box Two Words: {boxTwoCount} - DateTime: {boxTwoPT}";
+                labelBoxTwo.Text = $"Box Two Words: {boxTwoPT.Count()} - DateTime: {boxTwo}";
             }
             else
             {
                 labelBoxTwo.Text = "Box Two:";
             }
-            if (boxThreeCount > 0)
+            if (boxThreePT.Count() > 0)
             {
-                labelBoxThree.Text = $"Box Three Words: {boxThreeCount} - DateTime: {boxThreePT}";
+                labelBoxThree.Text = $"Box Three Words: {boxThreePT.Count()} - DateTime: {boxThree}";
             }
             else
             {
                 labelBoxThree.Text = "Box Three:";
             }
-            if (boxFourCount > 0)
+            if (boxFourPT.Count() > 0)
             {
-                labelBoxFour.Text = $"Box Four Words: {boxFourCount} - DateTime: {boxFourPT}";
+                labelBoxFour.Text = $"Box Four Words: {boxFourPT.Count} - DateTime: {boxFour}";
             }
             else
             {
                 labelBoxFour.Text = "Box Four:";
             }
-            if (boxFiveCount > 0)
+            if (boxFivePT.Count() > 0)
             {
-                labelBoxFive.Text = $"Box Five  Words: {boxFiveCount} - DateTime: {boxFivePT}";
+                labelBoxFive.Text = $"Box Five  Words: {boxFivePT.Count()} - DateTime: {boxFive}";
             }
             else
             {
