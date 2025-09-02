@@ -1,5 +1,8 @@
 using Leitner_Systems.LeitnerSystemsData;
+using Leitner_Systems.LeitnerSystemsDataCommon;
 using Leitner_Systems.LeitnerSystemsDataModels;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Win32;
 using System;
 using System.IO;
@@ -53,9 +56,67 @@ namespace Leitner_Systems
             {
                 MaxmizedFromTray();
 
+                SetTablesWithEqualsPerformanceTime();
                 InBoxesInfo();
             }
         }
+        private void SetTablesWithEqualsPerformanceTime()
+        {
+            var boxOne = context.BoxOnes!.Select(b => new { b.Id, b.PerformanceTime }).FirstOrDefault();
+            var boxTwo = context.BoxTwos!.Select(b => new { b.Id, b.PerformanceTime }).FirstOrDefault();
+            var boxThree = context.BoxThrees!.Select(b => new { b.Id, b.PerformanceTime }).FirstOrDefault();
+            var boxFour = context.BoxFours!.Select(b => new { b.Id, b.PerformanceTime }).FirstOrDefault();
+
+
+            if (boxOne != null)
+            {
+                SetPerformanceTimeToFirst("BoxOnes", boxOne!.PerformanceTime);
+            }
+            if (boxTwo != null)
+            {
+                SetPerformanceTimeToFirst("BoxTwos", boxTwo!.PerformanceTime);
+            }
+            if (boxThree != null)
+            {
+                SetPerformanceTimeToFirst("BoxThrees", boxThree!.PerformanceTime);
+            }
+            if (boxFour != null)
+            {
+                SetPerformanceTimeToFirst("BoxFours", boxFour!.PerformanceTime);
+            }
+        }
+
+        private static void SetPerformanceTimeToFirst(string tableName, DateTime performanceTime)
+        {
+            SqlConnection cnn = new SqlConnection(DbConfig.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnn;
+
+            try
+            {
+                using (cnn = new SqlConnection(DbConfig.ConnectionString))
+                {
+                    cnn.Open();
+                    string sqlCommand = $"Update {tableName} set PerformanceTime=@PerformanceTime";
+                    cmd = new SqlCommand(sqlCommand, cnn);
+
+                    cmd.Parameters.AddWithValue($"@PerformanceTime", performanceTime);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    //if (rowsAffected == 1)
+                    //{
+                    //    //MessageBox.Show("Information Updated", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    cnn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void InBoxesInfo()
         {
             var boxOne = context.BoxOnes!.Select(b => b.PerformanceTime).FirstOrDefault();
@@ -184,6 +245,10 @@ namespace Leitner_Systems
         private void timerOne_Tick(object sender, EventArgs e)
         {
             var getBoxOne = context.BoxOnes!.Select(w => new { w.Id, w.EnWord, w.BgWord, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
+            var getBoxTwo = context.BoxTwos!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
+            var getBoxThree = context.BoxThrees!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
+            var getBoxFour = context.BoxFours!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
+            var getBoxFive = context.BoxFives!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
 
             var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
 
@@ -200,17 +265,6 @@ namespace Leitner_Systems
                         frmTest.Show();
                     }
                 }
-            }
-            InBoxesInfo();
-        }
-        private void timerTwo_Tick(object sender, EventArgs e)
-        {
-            var getBoxTwo = context.BoxTwos!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
-
-            var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
-
-            if (timers != null)
-            {
                 if (getBoxTwo != null)//If have words in this table
                 {
                     DateTime performanceTime = getBoxTwo!.PerformanceTime;
@@ -221,16 +275,6 @@ namespace Leitner_Systems
                         frmTest.Show();
                     }
                 }
-            }
-        }
-        private void timerThree_Tick(object sender, EventArgs e)
-        {
-            var getBoxThree = context.BoxThrees!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
-
-            var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
-
-            if (timers != null)
-            {
                 if (getBoxThree != null)//If have words in this table
                 {
                     DateTime performanceTime = getBoxThree!.PerformanceTime;
@@ -241,16 +285,6 @@ namespace Leitner_Systems
                         frmTest.Show();
                     }
                 }
-            }
-        }
-        private void timerFour_Tick(object sender, EventArgs e)
-        {
-            var getBoxFour = context.BoxFours!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
-
-            var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
-
-            if (timers != null)
-            {
                 if (getBoxFour != null)//If have words in this table
                 {
                     DateTime performanceTime = getBoxFour!.PerformanceTime;
@@ -261,16 +295,6 @@ namespace Leitner_Systems
                         frmTest.Show();
                     }
                 }
-            }
-        }
-        private void timerFive_Tick(object sender, EventArgs e)
-        {
-            var getBoxFive = context.BoxFives!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
-
-            var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
-
-            if (timers != null)
-            {
                 if (getBoxFive != null)//If have words in this table
                 {
                     DateTime performanceTime = getBoxFive!.PerformanceTime;
@@ -282,29 +306,111 @@ namespace Leitner_Systems
                     }
                 }
             }
+            SetTablesWithEqualsPerformanceTime();
+            InBoxesInfo();
         }
-        public double SetTimers(double interval)
-        {
-            var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive, t.MHD }).FirstOrDefault();
+        //private void timerTwo_Tick(object sender, EventArgs e)
+        //{
+            //var getBoxTwo = context.BoxTwos!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
 
-            if (timers != null)
-            {
-                if (timers.MHD == "Mins")
-                {
-                    interval = 60000; // 1 minute
-                }
-                else if (timers.MHD == "Hours")
-                {
-                    interval = 3600000; // 1 hour
-                }
-                else if (timers.MHD == "Days")
-                {
-                    interval = 86400000; // 1 day
-                }
-            }
+            //var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
 
-            return interval;
-        }
+            //if (timers != null)
+            //{
+            //    if (getBoxTwo != null)//If have words in this table
+            //    {
+            //        DateTime performanceTime = getBoxTwo!.PerformanceTime;
+
+            //        if (performanceTime <= DateTime.Now.AddMilliseconds(1))
+            //        {
+            //            frmTest.LoadBox("BoxTwo");
+            //            frmTest.Show();
+            //        }
+            //    }
+            //}
+        //}
+        //private void timerThree_Tick(object sender, EventArgs e)
+        //{
+            //var getBoxThree = context.BoxThrees!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
+
+            //var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
+
+            //if (timers != null)
+            //{
+            //    if (getBoxThree != null)//If have words in this table
+            //    {
+            //        DateTime performanceTime = getBoxThree!.PerformanceTime;
+
+            //        if (performanceTime <= DateTime.Now.AddMilliseconds(1))
+            //        {
+            //            frmTest.LoadBox("BoxThree");
+            //            frmTest.Show();
+            //        }
+            //    }
+            //}
+        //}
+        //private void timerFour_Tick(object sender, EventArgs e)
+        //{
+            //var getBoxFour = context.BoxFours!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
+
+            //var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
+
+            //if (timers != null)
+            //{
+            //    if (getBoxFour != null)//If have words in this table
+            //    {
+            //        DateTime performanceTime = getBoxFour!.PerformanceTime;
+
+            //        if (performanceTime <= DateTime.Now.AddMilliseconds(1))
+            //        {
+            //            frmTest.LoadBox("BoxFour");
+            //            frmTest.Show();
+            //        }
+            //    }
+            //}
+        //}
+        //private void timerFive_Tick(object sender, EventArgs e)
+        //{
+            //var getBoxFive = context.BoxFives!.Select(w => new { w.Id, w.InsertDate, w.PerformanceTime }).Where(w => w.PerformanceTime <= DateTime.Now).FirstOrDefault();
+
+            //var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive }).FirstOrDefault();
+
+            //if (timers != null)
+            //{
+            //    if (getBoxFive != null)//If have words in this table
+            //    {
+            //        DateTime performanceTime = getBoxFive!.PerformanceTime;
+
+            //        if (performanceTime <= DateTime.Now.AddMilliseconds(1))
+            //        {
+            //            frmTest.LoadBox("BoxFive");
+            //            frmTest.Show();
+            //        }
+            //    }
+            //}
+        //}
+        //public double SetTimers(double interval)
+        //{
+        //    var timers = context.Timers!.Select(t => new { t.Id, t.BoxOne, t.BoxTwo, t.BoxThree, t.BoxFour, t.BoxFive, t.MHD }).FirstOrDefault();
+
+        //    if (timers != null)
+        //    {
+        //        if (timers.MHD == "Mins")
+        //        {
+        //            interval = 60000; // 1 minute
+        //        }
+        //        else if (timers.MHD == "Hours")
+        //        {
+        //            interval = 3600000; // 1 hour
+        //        }
+        //        else if (timers.MHD == "Days")
+        //        {
+        //            interval = 86400000; // 1 day
+        //        }
+        //    }
+
+        //    return interval;
+        //}
 
         private void toolStripButtonTimers_Click(object sender, EventArgs e)
         {

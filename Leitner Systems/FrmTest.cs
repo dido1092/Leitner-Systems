@@ -1,5 +1,6 @@
 ﻿using Leitner_Systems.LeitnerSystemsData;
 using Leitner_Systems.LeitnerSystemsDataModels;
+using Microsoft.IdentityModel.Tokens;
 using System.Speech.Synthesis;
 
 
@@ -82,7 +83,9 @@ namespace Leitner_Systems
 
             string word = labelWord.Text;
             string writingWord = textBoxWord.Text.ToUpper();
-            string[] arrWritingWords = writingWord.Split("-");
+            string[] arrWritingWords = writingWord.Split('-');
+            arrWritingWords[0] = arrWritingWords[0].TrimEnd();
+            arrWritingWords[1] = arrWritingWords[1].TrimEnd();
 
             //Form1 form1 = new Form1();
             double intervalMilisec = 0;
@@ -99,7 +102,7 @@ namespace Leitner_Systems
                     currentWordBg = getWord.BgWord.ToUpper().TrimEnd();
                     currentWordEn = getWord.EnWord.ToUpper().TrimEnd();
 
-                    if (arrWritingWords[0] == currentWordBg && arrWritingWords[1] == currentWordEn)
+                    if (arrWritingWords[0].TrimEnd() == currentWordBg && arrWritingWords[1].TrimEnd() == currentWordEn)
                     {
                         if (comboBoxBoxes.Text == "BoxOne")
                         {
@@ -277,7 +280,7 @@ namespace Leitner_Systems
                     currentWordBg = getWord.BgWord.ToUpper().TrimEnd();
                     currentWordEn = getWord.EnWord.ToUpper().TrimEnd();
 
-                    if (arrWritingWords[0] == currentWordEn && arrWritingWords[1] == currentWordBg)
+                    if (arrWritingWords[0].TrimEnd() == currentWordEn && arrWritingWords[1].TrimEnd() == currentWordBg)
                     {
                         if (comboBoxBoxes.Text == "BoxOne")
                         {

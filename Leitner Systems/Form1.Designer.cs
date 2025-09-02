@@ -48,10 +48,6 @@
             showToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             timerOne = new System.Windows.Forms.Timer(components);
-            timerTwo = new System.Windows.Forms.Timer(components);
-            timerThree = new System.Windows.Forms.Timer(components);
-            timerFour = new System.Windows.Forms.Timer(components);
-            timerFive = new System.Windows.Forms.Timer(components);
             labelBoxOne = new Label();
             labelBoxTwo = new Label();
             labelBoxThree = new Label();
@@ -201,30 +197,6 @@
             timerOne.Interval = 60000;
             timerOne.Tick += timerOne_Tick;
             // 
-            // timerTwo
-            // 
-            timerTwo.Enabled = true;
-            timerTwo.Interval = 60000;
-            timerTwo.Tick += timerTwo_Tick;
-            // 
-            // timerThree
-            // 
-            timerThree.Enabled = true;
-            timerThree.Interval = 60000;
-            timerThree.Tick += timerThree_Tick;
-            // 
-            // timerFour
-            // 
-            timerFour.Enabled = true;
-            timerFour.Interval = 60000;
-            timerFour.Tick += timerFour_Tick;
-            // 
-            // timerFive
-            // 
-            timerFive.Enabled = true;
-            timerFive.Interval = 60000;
-            timerFive.Tick += timerFive_Tick;
-            // 
             // labelBoxOne
             // 
             labelBoxOne.AutoSize = true;
@@ -313,10 +285,6 @@
         private ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Timer timerOne;
         private ToolStripButton toolStripButtonTimers;
-        private System.Windows.Forms.Timer timerTwo;
-        private System.Windows.Forms.Timer timerThree;
-        private System.Windows.Forms.Timer timerFour;
-        private System.Windows.Forms.Timer timerFive;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton toolStripButtonChart;
         private ToolStripButton toolStripButtonWordMovement;
